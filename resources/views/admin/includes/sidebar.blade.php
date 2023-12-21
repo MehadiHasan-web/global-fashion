@@ -65,9 +65,29 @@
                         <li>
                             <a href="{{ route('category.index') }}">Index</a>
                         </li>
+                        <li>
+                            <a href="{{ route('category.create') }}">Create</a>
+                        </li>
 
                     </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-solid fa-bezier-curve"></i>
+                        </span>
+                        <span class="nav-title">Sub Category</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('subcategory.index') }}">Index</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('subcategory.create') }}">Create</a>
+                        </li>
 
+                    </ul>
+                </li>
             </ul>
             <!-- END: side-nav-content -->
         </nav>

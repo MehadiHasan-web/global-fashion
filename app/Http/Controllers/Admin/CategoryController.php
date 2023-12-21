@@ -70,7 +70,7 @@ class CategoryController extends Controller
             'slug' => $slug,
             'description' => $request->description,
         ];
-        Category::create($data);
+        $category->update($data);
         noty()->addInfo( 'Category updated successfully');
         return redirect()->route('category.index');
     }
@@ -78,8 +78,9 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::findOrFail($id);
         $category->delete();
         response('Deleted Successfully');
     }

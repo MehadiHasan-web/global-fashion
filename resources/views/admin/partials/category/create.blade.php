@@ -12,7 +12,7 @@
                 <form action="{{ route('category.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Category <span class="text-danger">(required)</span></label>
+                        <label for="exampleFormControlTextarea1">Name <span class="text-danger">(required)</span></label>
                         <input type="text" name="name" id=""
                             class="form-control @error('name') is-invalide @enderror" placeholder="Write category name"
                             value="{{ old('name') }}">
