@@ -88,6 +88,57 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-solid fa-tags"></i>
+                        </span>
+                        <span class="nav-title">Tag</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('tag.index') }}">Index</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('tag.create') }}">Create</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-brands fa-product-hunt"></i>
+                        </span>
+                        <span class="nav-title">Products</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('product.index') }}">Index</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('product.create') }}">Create</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </span>
+                        <span class="nav-title">Slider</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('slider.index') }}">Index</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('slider.create') }}">Create</a>
+                        </li>
+
+                    </ul>
+                </li>
             </ul>
             <!-- END: side-nav-content -->
         </nav>
