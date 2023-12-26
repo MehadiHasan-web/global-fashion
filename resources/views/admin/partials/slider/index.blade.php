@@ -22,27 +22,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>
-                                <div>
-                                    <strong>Title </strong>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, ea.</p>
-                                </div>
-                            </td>
-                            <td>
-                                <img style="width:100px; height:100px"
-                                    src="https://th.bing.com/th/id/OIP.GlXqxcR9EmviN5kuwaUsMQHaIB?rs=1&pid=ImgDetMain"
-                                    alt="">
-                            </td>
-                            <td>delete</td>
-                        </tr>
                         @isset($sliders)
                             @foreach ($sliders as $key => $item)
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $item->name ?? '' }}</td>
-                                    <td>{{ Str::limit($item->description, 20, '...') }}</td>
+                                    <td>
+                                        <div>
+                                            <strong>{{ $item->title }} </strong>
+                                            <p>{{ Str::limit($item->description, 20, '...') }}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <img style="width:80px; height:80px" src="{{ URL::to('storage/slider/' . $item->image) }}"
+                                            alt="" class="rounded">
+
+                                    </td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('slider.show', $item->id) }}"

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use App\Models\Admin\Product;
+use App\Models\Admin\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,12 +18,19 @@ class ProductController extends Controller
         return view('admin.partials.product.index');
     }
 
+    public function getSubcategories(Request $request, $category)
+    {
+        $subcategories = SubCategory::where('cat_id', $category)->get();
+        return response()->json(['subcategories' => $subcategories]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('admin.partials.product.create', compact('categories'));
     }
 
     /**

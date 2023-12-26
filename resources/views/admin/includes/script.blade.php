@@ -1,6 +1,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="{{ asset('admin/js/jquery.js') }}"></script>
+{{-- <script src="{{ asset('admin/js/jquery.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script src="{{ asset('admin/js/tether.min.js') }}"></script>
 <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/unifyMenu/unifyMenu.js') }}"></script>
@@ -22,6 +24,8 @@
 <script src="{{ asset('admin/vendor/chartist/js/custom/custom-area-chart.js') }}"></script>
 <script src="{{ asset('admin/vendor/chartist/js/custom/donut-chart2.js') }}"></script>
 <script src="{{ asset('admin/vendor/chartist/js/custom/custom-line-chart4.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
 
 <!-- Common JS -->
 <script src="{{ asset('admin/js/common.js') }}"></script>
@@ -83,4 +87,31 @@
 
         })
     })
+</script>
+<script>
+    document.getElementById('category_id').addEventListener('change', function() {
+        var categoryId = this.value;
+        console.log(categoryId);
+
+        // Make an AJAX request to get subcategories based on the selected category
+        axios.get('get-subcategories/' + categoryId)
+            .then(function(response) {
+                var subcategories = response.data.subcategories;
+                var subcategoryDropdown = document.getElementById('subcategory_id');
+
+                // Clear existing options
+                subcategoryDropdown.innerHTML = '';
+
+                // Populate subcategory dropdown with new options
+                subcategories.forEach(function(subcategory) {
+                    var option = document.createElement('option');
+                    option.value = subcategory.id;
+                    option.text = subcategory.name;
+                    subcategoryDropdown.add(option);
+                });
+            })
+            .catch(function(error) {
+                console.error('Error fetching subcategories:', error);
+            });
+    });
 </script>

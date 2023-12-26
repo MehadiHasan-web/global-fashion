@@ -9,10 +9,10 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('slider.store') }}" method="POST">
+                <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Name <span class="text-danger">(required)</span></label>
+                        <label>Title <span class="text-danger">(required)</span></label>
                         <input type="text" name="title" id=""
                             class="form-control @error('title') is-invalide @enderror" placeholder="Write slider title"
                             value="{{ old('title') }}">
@@ -30,9 +30,19 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Image <span class="text-danger">(required)</span></label>
-                        <input type="file" name="image" class="form-control @error('image') is-invalide @enderror">
-                        @error('title')
+                        <label for="image">Image <span class="text-danger">(required)</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input name="image" type="file"
+                                    class="custom-file-input @error('image') is-visiable @enderror" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
+                            </div>
+                        </div>
+                        @error('image')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>

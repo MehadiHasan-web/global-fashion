@@ -19,6 +19,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubCategoryController::class);
     Route::resource('tag', TagController::class);
+    Route::get('product/get-subcategories/{category}', [ProductController::class, 'getSubcategories']);
     Route::resource('product', ProductController::class);
     Route::resource('slider', SliderController::class);
 
