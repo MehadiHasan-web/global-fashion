@@ -24,8 +24,10 @@
 <script src="{{ asset('admin/vendor/chartist/js/custom/custom-area-chart.js') }}"></script>
 <script src="{{ asset('admin/vendor/chartist/js/custom/donut-chart2.js') }}"></script>
 <script src="{{ asset('admin/vendor/chartist/js/custom/custom-line-chart4.js') }}"></script>
-
+{{-- ajax  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+{{-- selector 2 --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- Common JS -->
 <script src="{{ asset('admin/js/common.js') }}"></script>
@@ -114,4 +116,115 @@
                 console.error('Error fetching subcategories:', error);
             });
     });
+</script>
+
+{{-- multipal select 2  --}}
+<script>
+    $(".js-example-tokenizer").select2({
+        tags: true,
+        tokenSeparators: [',', ' ']
+    })
+</script>
+{{-- products thumb image  --}}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.image-upload-wrap').hide();
+
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function() {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function() {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
+</script>
+{{-- product multipal image upload js  --}}
+<script>
+    jQuery(document).ready(function() {
+        ImgUpload();
+    });
+
+    function ImgUpload() {
+        var imgWrap = "";
+        var imgArray = [];
+
+        $('.upload__inputfile').each(function() {
+            $(this).on('change', function(e) {
+                imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                var maxLength = $(this).attr('data-max_length');
+
+                var files = e.target.files;
+                var filesArr = Array.prototype.slice.call(files);
+                var iterator = 0;
+                filesArr.forEach(function(f, index) {
+
+                    if (!f.type.match('image.*')) {
+                        return;
+                    }
+
+                    if (imgArray.length > maxLength) {
+                        return false
+                    } else {
+                        var len = 0;
+                        for (var i = 0; i < imgArray.length; i++) {
+                            if (imgArray[i] !== undefined) {
+                                len++;
+                            }
+                        }
+                        if (len > maxLength) {
+                            return false;
+                        } else {
+                            imgArray.push(f);
+
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                var html =
+                                    "<div class='upload__img-box'><div style='background-image: url(" +
+                                    e.target.result + ")' data-number='" + $(
+                                        ".upload__img-close").length + "' data-file='" + f
+                                    .name +
+                                    "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                imgWrap.append(html);
+                                iterator++;
+                            }
+                            reader.readAsDataURL(f);
+                        }
+                    }
+                });
+            });
+        });
+
+        $('body').on('click', ".upload__img-close", function(e) {
+            var file = $(this).parent().data("file");
+            for (var i = 0; i < imgArray.length; i++) {
+                if (imgArray[i].name === file) {
+                    imgArray.splice(i, 1);
+                    break;
+                }
+            }
+            $(this).parent().parent().remove();
+        });
+    }
 </script>

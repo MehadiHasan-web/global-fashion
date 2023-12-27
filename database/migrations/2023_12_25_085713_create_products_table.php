@@ -21,12 +21,14 @@ return new class extends Migration
             $table->float('discounted_price')->nullable();
             $table->string('brand_name')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->unsignedInteger('gender')->default(1);
             $table->string('color');
             $table->string('size');
             $table->unsignedInteger('is_featured')->default(1);
             $table->unsignedInteger('is_available')->default(1);
+            $table->string('thumb_image');
+            $table->string('images')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
