@@ -15,14 +15,14 @@ class TagSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-        for($i=0; $i <= 20; $i++){
-            $tag = new Tag;
-            $tag->name = $faker->word;
-            $tag->slug = Str::slug($faker->name, '-');
-            $tag->description = $faker->sentence;
-            $tag->save();
-        }
+        // $faker = Faker::create();
+        // for($i=0; $i <= ; $i++){
+        //     $tag = new Tag;
+        //     $tag->name = $faker->word;
+        //     $tag->slug = Str::slug($faker->name, '-');
+        //     $tag->description = $faker->sentence;
+        //     $tag->save();
+        // }
 
     }
 }

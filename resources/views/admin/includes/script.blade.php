@@ -28,12 +28,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
 {{-- selector 2 --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{-- ck editor  --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+
 
 <!-- Common JS -->
 <script src="{{ asset('admin/js/common.js') }}"></script>
 @livewireScripts
 
 
+{{-- delete script  --}}
 <script>
     $(document).ready(function() {
         $('.delate-item-btn').on('click', function(e) {
@@ -90,13 +94,14 @@
         })
     })
 </script>
+{{-- get subcategory by category  --}}
 <script>
     document.getElementById('category_id').addEventListener('change', function() {
         var categoryId = this.value;
         console.log(categoryId);
 
         // Make an AJAX request to get subcategories based on the selected category
-        axios.get('get-subcategories/' + categoryId)
+        axios.get('/dashboard/product/get-subcategories/' + categoryId)
             .then(function(response) {
                 var subcategories = response.data.subcategories;
                 var subcategoryDropdown = document.getElementById('subcategory_id');
@@ -227,4 +232,16 @@
             $(this).parent().parent().remove();
         });
     }
+</script>
+{{-- ck editor  --}}
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    CKEDITOR.replace('editor1', {
+        height: 400 // Set your custom height here
+    });
 </script>

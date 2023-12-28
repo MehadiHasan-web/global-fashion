@@ -24,7 +24,9 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Product Description <span
                                     class="text-danger">(required)</span></label>
-                            <textarea name="description" id="exampleFormControlTextarea1" rows="3"
+
+
+                            <textarea name="description" id="editor" rows="3"
                                 class="form-control @error('description') is-invalide @enderror " placeholder="Write description">{{ old('description') }}</textarea>
                             @error('description')
                                 <p class="text-danger">{{ $message }}</p>
@@ -66,7 +68,6 @@
                                 <div class="input-group">
                                     <select name="category_id"
                                         class="custom-select @error('subcategory') is-invalide @enderror" id="category_id">
-                                        <option selected="">Select Category...</option>
                                         @isset($categories)
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name ?? '' }}</option>
@@ -79,7 +80,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-6 p-0 pl-1">
-                                <label for="subcategory">Sib Category <span class="text-danger">(required)</span></label>
+                                <label for="subcategory">Sib Category <span class="text-success">(Optional)</span></label>
                                 <div class="input-group">
                                     <select name="subcategory_id"
                                         class="custom-select @error('subcategory') is-invalide @enderror"
@@ -98,8 +99,8 @@
                                 class="form-control js-example-tokenizer @error('color') is-invalide @enderror"
                                 multiple="multiple">
                                 <option selected="selected">white</option>
-                                <option selected="selected">red</option>
-                                <option selected="selected">green</option>
+                                <option>red</option>
+                                <option>green</option>
                             </select>
                             @error('color')
                                 <p class="text-danger">{{ $message }}</p>
@@ -111,10 +112,10 @@
                                 class="form-control js-example-tokenizer  @error('size') is-invalide @enderror"
                                 multiple="multiple">
                                 <option selected="selected">S</option>
-                                <option selected="selected">M</option>
-                                <option selected="selected">L</option>
-                                <option selected="selected">XL</option>
-                                <option selected="selected">XXL</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
                             </select>
                             @error('size')
                                 <p class="text-danger">{{ $message }}</p>

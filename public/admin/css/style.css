@@ -193,3 +193,11 @@ p {
   position: relative;
   padding-bottom: 100%;
 }
+/* ck editero  */
+
+.ck .ck-powered-by{
+    display: none;
+}
+
+
+
