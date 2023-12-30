@@ -7,26 +7,18 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
+// frontend controller
+Route::group([],function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 });
-// Route::prefix('dashboard')->middleware('auth')->group(function(){
-//     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-//     Route::resource('category', CategoryController::class);
-//     Route::resource('subcategory', SubCategoryController::class);
-//     Route::resource('tag', TagController::class);
-//     Route::get('product/get-subcategories/{category}', [ProductController::class, 'getSubcategories']);
-//     Route::resource('product', ProductController::class);
-//     Route::resource('slider', SliderController::class);
-//     Route::resource('social', SocialController::class);
 
-// });
-
+// backend controller
 Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard'],function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('category', CategoryController::class);

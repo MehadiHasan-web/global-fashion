@@ -9,17 +9,17 @@
     <div class="col-lg-12 col-sm-12">
         <div class="card">
             <div class="card-body">
-                <div>
-                    <strong>Name: </strong>
-                    <p class="ml-5">{{ $slider->name ?? '' }}</p>
+                <div class="mb-3">
+                    <strong>Title: </strong>
+                    <p class="ml-5">{{ $slider->title ?? '' }}</p>
                 </div>
-                <div>
+                <div class="mb-3">
                     <strong>Description: </strong>
                     <p class="ml-5">{{ $slider->description ?? '' }}</p>
                 </div>
                 <div class="mt-3 mb-3 ">
-                    <img src="{{ URL::to('storage/slider/' . $slider->image ?? '') }}" class="img-fluid rounded" alt=""
-                        style="width: 300px">
+                    <img src="{{ URL::to('storage/slider/' . $slider->image ?? '') }}" class="img-fluid rounded"
+                        alt="" style="width: 300px">
                 </div>
                 <div class="d-flex justify-content-start">
                     <div class="d-flex ml-2">
