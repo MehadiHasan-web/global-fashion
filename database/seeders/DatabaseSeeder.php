@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => 'password'
         ]);
-        $this->call([TagSeeder::class]);
+        $this->call([TagSeeder::class, RolePermission::class]);
     }
 }

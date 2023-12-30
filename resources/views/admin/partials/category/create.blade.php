@@ -15,7 +15,7 @@
                         <label for="exampleFormControlTextarea1">Name <span class="text-danger">(required)</span></label>
                         <input type="text" name="name" id=""
                             class="form-control @error('name') is-invalide @enderror" placeholder="Write category name"
-                            value="{{ old('name') }}">
+                            value="{{ old('name') }}" required>
                         @error('name')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror

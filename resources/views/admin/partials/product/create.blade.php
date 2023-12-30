@@ -16,7 +16,7 @@
                             <label>Product Name <span class="text-danger">(required)</span></label>
                             <input type="text" name="name" id=""
                                 class="form-control @error('name') is-invalide @enderror" placeholder="Write product name"
-                                value="{{ old('name') }}">
+                                value="{{ old('name') }}" required>
                             @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -27,7 +27,7 @@
 
 
                             <textarea name="description" id="editor" rows="3"
-                                class="form-control @error('description') is-invalide @enderror " placeholder="Write description">{{ old('description') }}</textarea>
+                                class="form-control @error('description') is-invalide @enderror " placeholder="Write description" required>{{ old('description') }}</textarea>
                             @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -37,7 +37,7 @@
                                 <label>Product price <span class="text-danger">(required)</span></label>
                                 <input type="number" name="price" id=""
                                     class="form-control @error('price') is-invalide @enderror"
-                                    placeholder="Write product price" value="{{ old('price') }}">
+                                    placeholder="Write product price" value="{{ old('price') }}" required>
                                 @error('price')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -67,7 +67,8 @@
                                 <label for="Category">Category <span class="text-danger">(required)</span></label>
                                 <div class="input-group">
                                     <select name="category_id"
-                                        class="custom-select @error('subcategory') is-invalide @enderror" id="category_id">
+                                        class="custom-select @error('subcategory') is-invalide @enderror" id="category_id"
+                                        required>
                                         @isset($categories)
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name ?? '' }}</option>
@@ -85,7 +86,7 @@
                                     <select name="subcategory_id"
                                         class="custom-select @error('subcategory') is-invalide @enderror"
                                         id="subcategory_id">
-                                        <option selected="">Select sub category...</option>
+                                        {{-- <option selected="" >Select sub category...</option> --}}
                                     </select>
                                 </div>
                                 @error('cat_id')
@@ -97,7 +98,7 @@
                             <label for="Colors">Colors <span class="text-danger">(required)</span></label>
                             <select name="color[]"
                                 class="form-control js-example-tokenizer @error('color') is-invalide @enderror"
-                                multiple="multiple">
+                                multiple="multiple" required>
                                 <option selected="selected">white</option>
                                 <option>red</option>
                                 <option>green</option>
@@ -110,7 +111,7 @@
                             <label for="Size">Size <span class="text-danger">(required)</span></label>
                             <select name="size[]"
                                 class="form-control js-example-tokenizer  @error('size') is-invalide @enderror"
-                                multiple="multiple">
+                                multiple="multiple" required>
                                 <option selected="selected">S</option>
                                 <option>M</option>
                                 <option>L</option>
@@ -126,7 +127,7 @@
                         <div class="d-flex mb-2">
                             <div class="form-check">
                                 <input class="form-check-input  @error('gender') is-invalide @enderror" type="radio"
-                                    name="gender" id="male" value="1" checked>
+                                    name="gender" id="male" value="1" checked style="margin-top: 9px;">
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
@@ -134,7 +135,7 @@
 
                             <div class="form-check ml-3">
                                 <input class="form-check-input  @error('gender') is-invalide @enderror" type="radio"
-                                    name="gender" id="femail" value="2">
+                                    name="gender" id="femail" value="2" style="margin-top: 9px;">
                                 <label class="form-check-label" for="femail">
                                     Female
                                 </label>
@@ -152,7 +153,8 @@
                                         <div class="form-check mr-2 ml-2 ">
                                             <input name="tag_id[]" class="form-check-input" type="checkbox"
                                                 value="{{ old('tag_id[]', $item->id) }}" id="{{ $item->id ?? '' }}"
-                                                {{ in_array($item->id, old('tag_id', [])) ? 'checked' : '' }}>
+                                                {{ in_array($item->id, old('tag_id', [])) ? 'checked' : '' }}
+                                                style="margin-top: 9px;">
                                             <label class="form-check-label" for="{{ $item->id }}">
                                                 {{ $item->name ?? '' }}
                                             </label>
@@ -176,7 +178,7 @@
                             <div class="image-upload-wrap">
                                 <input name="thumb_image"
                                     class="file-upload-input  @error('thumb_image') is-invalide @enderror" type='file'
-                                    onchange="readURL(this);" accept="image/*" />
+                                    onchange="readURL(this);" accept="image/*" required />
                                 <div class="drag-text">
                                     <h3>Drag and drop </h3>
                                 </div>

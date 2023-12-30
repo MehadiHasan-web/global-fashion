@@ -16,7 +16,7 @@
                         <label for="name">Category <span class="text-danger">(required)</span></label>
                         <input type="text" name="name" id="name"
                             class="form-control @error('name') is-invalide @enderror" placeholder="Write category name"
-                            value="{{ old('name', $category->name) }}" required>
+                            value="{{ old('name', $category->name) }}">
                         @error('name')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror

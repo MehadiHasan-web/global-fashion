@@ -116,10 +116,6 @@
                         <li>
                             <a href="{{ route('product.index') }}">Index</a>
                         </li>
-                        <li>
-                            <a href="{{ route('product.create') }}">Create</a>
-                        </li>
-
                     </ul>
                 </li>
                 <li>
@@ -137,6 +133,19 @@
                             <a href="{{ route('slider.create') }}">Create</a>
                         </li>
 
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-regular fa-share-from-square"></i>
+                        </span>
+                        <span class="nav-title">Socials</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('social.index') }}">Index</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

@@ -15,7 +15,7 @@
                         <label>Title <span class="text-danger">(required)</span></label>
                         <input type="text" name="title" id=""
                             class="form-control @error('title') is-invalide @enderror" placeholder="Write slider title"
-                            value="{{ old('title') }}">
+                            value="{{ old('title') }}" required>
                         @error('title')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -24,7 +24,7 @@
                         <label for="exampleFormControlTextarea1">Description <span
                                 class="text-danger">(required)</span></label>
                         <textarea name="description" id="exampleFormControlTextarea1" rows="3"
-                            class="form-control @error('description') is-invalide @enderror" placeholder="Write description">{{ old('description') }}</textarea>
+                            class="form-control @error('description') is-invalide @enderror" placeholder="Write description" required>{{ old('description') }}</textarea>
                         @error('description')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -38,7 +38,7 @@
                             <div class="custom-file">
                                 <input name="image" type="file"
                                     class="custom-file-input @error('image') is-visiable @enderror" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
+                                    aria-describedby="inputGroupFileAddon01" required>
                                 <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
                             </div>
                         </div>

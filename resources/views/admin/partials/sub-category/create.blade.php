@@ -15,7 +15,7 @@
                         <label for="name">Name <span class="text-danger">(required)</span></label>
                         <input type="text" name="name" id="name"
                             class="form-control @error('name') is-invalide @enderror" placeholder="Write category name"
-                            value="{{ old('name') }}">
+                            value="{{ old('name') }}" required>
                         @error('name')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -27,7 +27,7 @@
                                 <label class="input-group-text" for="Category">Options</label>
                             </div>
                             <select name="cat_id" class="custom-select @error('subcategory') is-invalide @enderror"
-                                id="Category">
+                                id="Category" required>
                                 <option selected="">Select Category...</option>
                                 @isset($categories)
                                     @foreach ($categories as $item)
