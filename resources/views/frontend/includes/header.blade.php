@@ -14,33 +14,27 @@
                     <nav>
                         <ul>
                             <li><a href="{{ route('home') }}">Home</i></a></li>
-                            <li><a href="shop.html"> Shop <i class="fa fa-angle-down"></i> </a>
+                            <li><a href="{{ route('shop') }}"> Shop <i class="fa fa-angle-down"></i> </a>
                                 <ul class="mega-menu">
                                     <li>
                                         <ul>
-                                            <li class="mega-menu-title"><a href="#">shop layout</a></li>
-                                            <li><a href="shop.html">standard style</a></li>
-                                            <li><a href="shop-filter.html">Grid filter style</a></li>
-                                            <li><a href="shop-grid-2-col.html">Grid 2 column</a></li>
-                                            <li><a href="shop-no-sidebar.html">Grid No sidebar</a></li>
-                                            <li><a href="shop-grid-fw.html">Grid full wide </a></li>
-                                            <li><a href="shop-right-sidebar.html">Grid right sidebar</a></li>
-                                            <li><a href="shop-list.html">list 1 column box </a></li>
-                                            <li><a href="shop-list-fw.html">list 1 column full wide </a></li>
-                                            <li><a href="shop-list-fw-2col.html">list 2 column full wide</a></li>
+                                            <li class="mega-menu-title"><a href="#">Categories</a></li>
+                                            @isset($categories)
+                                                @foreach ($categories as $item)
+                                                    <li><a href="#">{{ $item->name }}</a></li>
+                                                @endforeach
+                                            @endisset
+
                                         </ul>
                                     </li>
                                     <li>
                                         <ul>
-                                            <li class="mega-menu-title"><a href="#">product details</a></li>
-                                            <li><a href="product-details.html">tab style 1</a></li>
-                                            <li><a href="product-details-2.html">tab style 2</a></li>
-                                            <li><a href="product-details-3.html">tab style 3</a></li>
-                                            <li><a href="product-details-4.html">sticky style</a></li>
-                                            <li><a href="product-details-5.html">gallery style </a></li>
-                                            <li><a href="product-details-slider-box.html">Slider style</a></li>
-                                            <li><a href="product-details-affiliate.html">affiliate style</a></li>
-                                            <li><a href="product-details-6.html">fixed image style </a></li>
+                                            <li class="mega-menu-title"><a href="#">Sub Category</a></li>
+                                            @isset($subcategories)
+                                                @foreach ($subcategories as $item)
+                                                    <li><a href="#">{{ $item->name }}</a></li>
+                                                @endforeach
+                                            @endisset
                                         </ul>
                                     </li>
                                     <li>
@@ -53,11 +47,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="shop.html">Collection</a></li>
-
-                            <li><a href="#">Blog </a>
-                            </li>
-                            <li><a href="about.html"> About </a></li>
                             <li><a href="contact.html"> Contact</a></li>
                         </ul>
                     </nav>
@@ -117,9 +106,8 @@
                     </div>
                     <div class="same-style cart-wrap">
                         <button class="icon-cart">
-                            <svg style="width: 23px; color: #3c3939;" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                class="w-6 h-6">
+                            <svg style="width: 23px; color: #3c3939;" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                             </svg>
@@ -174,108 +162,27 @@
             <div class="mobile-menu">
                 <nav id="mobile-menu-active">
                     <ul class="menu-overflow">
-                        <li><a href="{{ route('home') }}">HOME</a>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('shop') }}">Shop</a></li>
+
+                        <li><a href="#">Category</a>
                             <ul>
-                                <li><a href="#">Demo Group 01</a>
-                                    <ul>
-                                        <li><a href="index.html">Home 1 – Fashion</a></li>
-                                        <li><a href="index-2.html">Home 2 – Fashion</a></li>
-                                        <li><a href="index-3.html">Home 3 – Fashion</a></li>
-                                        <li><a href="index-4.html">Home 4 – Fashion</a></li>
-                                        <li><a href="index-5.html">Home 5 – Fashion</a></li>
-                                        <li><a href="index-6.html">Home 6 – Fashion</a></li>
-                                        <li><a href="index-7.html">Home 7 – Fashion</a></li>
-                                        <li><a href="index-8.html">Home 8 – Minimal</a></li>
-                                        <li><a href="index-9.html">Home 9 – Electronics</a></li>
-                                        <li><a href="index-10.html">Home 10 – Furniture</a></li>
-                                        <li><a href="index-11.html">Home 11 - showcase slider</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Demo Group 02</a>
-                                    <ul>
-                                        <li><a href="index-12.html">Home 12 – Plants</a></li>
-                                        <li><a href="index-13.html">Home 13 – Cosmetic</a></li>
-                                        <li><a href="index-14.html">Home 14 – Christmas</a></li>
-                                        <li><a href="index-15.html">Home 15 – Fruit</a></li>
-                                        <li><a href="index-16.html">Home 16 – Black Friday</a></li>
-                                        <li><a href="index-17.html">Home 17 – Flower</a></li>
-                                        <li><a href="index-18.html">Home 18 – Book</a></li>
-                                        <li><a href="index-19.html">Home 19 – Fashion</a></li>
-                                        <li><a href="index-20.html">Home 20 – Electronics</a></li>
-                                        <li><a href="index-21.html">Home 21 – Furniture</a></li>
-                                        <li><a href="index-22.html">Home 22 – Handmade</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Demo Group 03</a>
-                                    <ul>
-                                        <li><a href="index-23.html">Home 23 – Organic</a></li>
-                                        <li><a href="index-24.html">Home 24 – Pet Food</a></li>
-                                        <li><a href="index-25.html">Home 25 – Auto Parts</a></li>
-                                        <li><a href="index-26.html">Home 26 – Cake Shop</a></li>
-                                        <li><a href="index-27.html">Home 27 – Kids Fashion</a></li>
-                                        <li><a href="index-28.html">Home 28 – Book Shop</a></li>
-                                        <li><a href="index-29.html">Home 29 – Flower Shop</a></li>
-                                        <li><a href="index-30.html">Home 30 – Instagram</a></li>
-                                        <li><a href="index-31.html">Home 31 – Black Friday</a></li>
-                                        <li><a href="index-32.html">Home 32 – Valentine Day</a></li>
-                                        <li><a href="index-33.html">Home 33 – Medical Equipment</a></li>
-                                    </ul>
-                                </li>
+                                @isset($categories)
+                                    @foreach ($categories as $item)
+                                        <li><a href="#">{{ $item->name }}</a></li>
+                                    @endforeach
+                                @endisset
                             </ul>
                         </li>
-                        <li><a href="shop.html">Shop</a>
+                        <li><a href="blog.html">Sub Category</a>
                             <ul>
-                                <li><a href="#">shop layout</a>
-                                    <ul>
-                                        <li><a href="shop.html">standard style</a></li>
-                                        <li><a href="shop-filter.html">Grid filter style</a></li>
-                                        <li><a href="shop-grid-2-col.html">Grid 2 column</a></li>
-                                        <li><a href="shop-no-sidebar.html">Grid No sidebar</a></li>
-                                        <li><a href="shop-grid-fw.html">Grid full wide </a></li>
-                                        <li><a href="shop-right-sidebar.html">Grid right sidebar</a></li>
-                                        <li><a href="shop-list.html">list 1 column box </a></li>
-                                        <li><a href="shop-list-fw.html">list 1 column full wide </a></li>
-                                        <li><a href="shop-list-fw-2col.html">list 2 column full wide</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">product details</a>
-                                    <ul>
-                                        <li><a href="product-details.html">tab style 1</a></li>
-                                        <li><a href="product-details-2.html">tab style 2</a></li>
-                                        <li><a href="product-details-3.html">tab style 3</a></li>
-                                        <li><a href="product-details-4.html">sticky style</a></li>
-                                        <li><a href="product-details-5.html">gallery style </a></li>
-                                        <li><a href="product-details-slider-box.html">Slider style</a></li>
-                                        <li><a href="product-details-affiliate.html">affiliate style</a></li>
-                                        <li><a href="product-details-6.html">fixed image style </a></li>
-                                    </ul>
-                                </li>
+                                @isset($subcategories)
+                                    @foreach ($subcategories as $item)
+                                        <li><a href="#">{{ $item->name }}</a></li>
+                                    @endforeach
+                                @endisset
                             </ul>
                         </li>
-                        <li><a href="shop.html">Collection</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul>
-                                <li><a href="about.html">about us</a></li>
-                                <li><a href="cart-page.html">cart page</a></li>
-                                <li><a href="checkout.html">checkout </a></li>
-                                <li><a href="wishlist.html">wishlist </a></li>
-                                <li><a href="my-account.html">my account</a></li>
-                                <li><a href="login-register.html">login / register </a></li>
-                                <li><a href="contact.html">contact us </a></li>
-                                <li><a href="404.html">404 page </a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">blog standard</a></li>
-                                <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                                <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                <li><a href="blog-details.html">blog details 1</a></li>
-                                <li><a href="blog-details-2.html">blog details 2</a></li>
-                                <li><a href="blog-details-3.html">blog details 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="about.html">About us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>

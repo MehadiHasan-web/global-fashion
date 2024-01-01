@@ -14,4 +14,5 @@
 <link href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('admin/vendor/chartist/css/chartist-custom.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+
 @livewireStyles

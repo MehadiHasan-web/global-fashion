@@ -74,60 +74,7 @@
             @include('frontend.partials.home.product')
         </div>
     </div>
-    <div class="blog-area pb-55">
-        <div class="container">
-            <div class="section-title text-center mb-55">
-                <h2>OUR BLOG</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog-wrap mb-30 scroll-zoom">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/blog-1.jpg') }}"
-                                    alt=""></a>
-                            <span class="purple">Lifestyle</span>
-                        </div>
-                        <div class="blog-content-wrap">
-                            <div class="blog-content text-center">
-                                <h3><a href="blog-details.html">Lorem ipsum dolor sit <br> amet consec.</a></h3>
-                                <span>By Shop <a href="#">Admin</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog-wrap mb-30 scroll-zoom">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/blog-2.jpg') }}"
-                                    alt=""></a>
-                            <span class="pink">Lifestyle</span>
-                        </div>
-                        <div class="blog-content-wrap">
-                            <div class="blog-content text-center">
-                                <h3><a href="blog-details.html">Lorem ipsum dolor sit <br> amet consec.</a></h3>
-                                <span>By Shop <a href="#">Admin</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog-wrap mb-30 scroll-zoom">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/blog-3.jpg') }}"
-                                    alt=""></a>
-                            <span class="purple">Lifestyle</span>
-                        </div>
-                        <div class="blog-content-wrap">
-                            <div class="blog-content text-center">
-                                <h3><a href="blog-details.html">Lorem ipsum dolor sit <br> amet consec.</a></h3>
-                                <span>By Shop <a href="#">Admin</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
@@ -158,17 +105,13 @@
                             <div class="quickview-wrap mt-15">
                                 <div class="quickview-slide-active owl-carousel nav nav-style-1" role="tablist">
                                     <a class="active" data-bs-toggle="tab" href="#pro-1"><img
-                                            src="{{ asset('frontend/img/product/quickview-s1.jpg') }}"
-                                            alt=""></a>
+                                            src="{{ asset('frontend/img/product/quickview-s1.jpg') }}" alt=""></a>
                                     <a data-bs-toggle="tab" href="#pro-2"><img
-                                            src="{{ asset('frontend/img/product/quickview-s2.jpg') }}"
-                                            alt=""></a>
+                                            src="{{ asset('frontend/img/product/quickview-s2.jpg') }}" alt=""></a>
                                     <a data-bs-toggle="tab" href="#pro-3"><img
-                                            src="{{ asset('frontend/img/product/quickview-s3.jpg') }}"
-                                            alt=""></a>
+                                            src="{{ asset('frontend/img/product/quickview-s3.jpg') }}" alt=""></a>
                                     <a data-bs-toggle="tab" href="#pro-4"><img
-                                            src="{{ asset('frontend/img/product/quickview-s2.jpg') }}"
-                                            alt=""></a>
+                                            src="{{ asset('frontend/img/product/quickview-s2.jpg') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>

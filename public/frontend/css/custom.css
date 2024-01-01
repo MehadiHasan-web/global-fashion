@@ -1,0 +1,14 @@
+.colors{
+    display:inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #dedede;
+    cursor:pointer;
+
+}
+
+.colors.selected{
+    background: #ffb410;
+    color: #fff;
+}

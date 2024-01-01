@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductDetailsController;
+use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Frontend\Shop;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 // frontend controller
 Route::group([],function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/product-details/{slug}', [ProductDetailsController::class, 'index'])->name('product.details');
+    Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 });
 
 // backend controller

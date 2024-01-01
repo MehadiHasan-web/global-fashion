@@ -33,13 +33,8 @@ class SocialController extends Controller
                 'instagram' => $request->instagram,
                 'tiktok' => $request->tiktok,
             ]);
-            // noty()->addSuccess('Successfully updated');
+            noty()->addSuccess('Successfully updated');
 
-noty()
-->sounds('sources', ['/dist/sounds/notification.wav'])
-->sounds('volume', 0.3)
-->sounds('conditions', ['docVisible', 'docHidden'])
-->addInfo('Your review has been submitted and is being reviewed.');
         }else{
             Social::create([
                 'facebook' => $request->facebook,

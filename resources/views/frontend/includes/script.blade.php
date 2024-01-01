@@ -8,3 +8,14 @@
 <script src="{{ asset('frontend/js/ajax-mail.js') }}"></script>
 <!-- Main JS -->
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+{{-- color selector --}}
+<script>
+    $('.radio-group .colors').click(function() {
+        $(this).parent().find('.colors').removeClass('selected');
+        $(this).addClass('selected');
+        var val = $(this).attr('data-value');
+        //alert(val);
+        $(this).parent().find('input').val(val);
+    });
+</script>
+@livewireScripts

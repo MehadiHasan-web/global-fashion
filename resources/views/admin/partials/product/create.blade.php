@@ -178,7 +178,7 @@
                             <div class="image-upload-wrap">
                                 <input name="thumb_image"
                                     class="file-upload-input  @error('thumb_image') is-invalide @enderror" type='file'
-                                    onchange="readURL(this);" accept="image/*" required />
+                                    onchange="readURL(this);" accept="image/*" />
                                 <div class="drag-text">
                                     <h3>Drag and drop </h3>
                                 </div>
