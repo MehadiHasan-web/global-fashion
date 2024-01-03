@@ -1,3 +1,11 @@
+@php
+    $categories = DB::table('categories')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+    $subcategories = DB::table('sub_categories')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+@endphp
 <header class="header-area header-padding-1 sticky-bar header-res-padding clearfix">
     <div class="container-fluid">
         <div class="row">
@@ -104,57 +112,7 @@
 
                         </a>
                     </div>
-                    <div class="same-style cart-wrap">
-                        <button class="icon-cart">
-                            <svg style="width: 23px; color: #3c3939;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                            </svg>
-
-                            <span class="count-style">02</span>
-                        </button>
-                        <div class="shopping-cart-content">
-                            <ul>
-                                <li class="single-shopping-cart">
-                                    <div class="shopping-cart-img">
-                                        <a href="#"><img alt=""
-                                                src="{{ asset('frontend/img/cart/cart-1.png') }}"></a>
-                                    </div>
-                                    <div class="shopping-cart-title">
-                                        <h4><a href="#">T- Shart & Jeans </a></h4>
-                                        <h6>Qty: 02</h6>
-                                        <span>$260.00</span>
-                                    </div>
-                                    <div class="shopping-cart-delete">
-                                        <a href="#"><i class="fa fa-times-circle"></i></a>
-                                    </div>
-                                </li>
-                                <li class="single-shopping-cart">
-                                    <div class="shopping-cart-img">
-                                        <a href="#"><img alt=""
-                                                src="{{ asset('frontend/img/cart/cart-2.png') }}"></a>
-                                    </div>
-                                    <div class="shopping-cart-title">
-                                        <h4><a href="#">T- Shart & Jeans </a></h4>
-                                        <h6>Qty: 02</h6>
-                                        <span>$260.00</span>
-                                    </div>
-                                    <div class="shopping-cart-delete">
-                                        <a href="#"><i class="fa fa-times-circle"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="shopping-cart-total">
-                                <h4>Shipping : <span>$20.00</span></h4>
-                                <h4>Total : <span class="shop-total">$260.00</span></h4>
-                            </div>
-                            <div class="shopping-cart-btn btn-hover text-center">
-                                <a class="default-btn" href="cart-page.html">view cart</a>
-                                <a class="default-btn" href="checkout.html">checkout</a>
-                            </div>
-                        </div>
-                    </div>
+                    @livewire('frontend.count-card')
                 </div>
             </div>
         </div>

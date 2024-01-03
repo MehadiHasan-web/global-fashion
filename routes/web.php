@@ -21,6 +21,7 @@ Route::group([],function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/product-details/{slug}', [ProductDetailsController::class, 'index'])->name('product.details');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+    route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
 });
 
 // backend controller

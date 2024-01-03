@@ -31,7 +31,13 @@
                                         <img src="{{ $imageOneUrl }}" alt="">
                                     @endif
 
-                                    <span class="dec-price">-10%</span>
+                                    <span class="dec-price">
+                                        @if ($product->discounted_price)
+                                            {{ number_format((($product->price - $product->discounted_price) / $product->price) * 100, 2) . '%' }}
+                                        @else
+                                            in stock
+                                        @endif
+                                    </span>
                                     <div class="img-popup-wrap">
                                         @if ($imageOneUrl && file_exists(public_path('storage/product_image/' . $imagePathOne)))
                                             <a class="img-popup" href="{{ $imageOneUrl }}"><i
@@ -43,7 +49,13 @@
                                 <div id="shop-details-2" class="tab-pane  large-img-style active">
                                     <img src="{{ URL::to('storage/product_thumbnail/' . $product->thumb_image ?? '') }}"
                                         alt="">
-                                    <span class="dec-price">-10%</span>
+                                    <span class="dec-price">
+                                        @if ($product->discounted_price)
+                                            {{ number_format((($product->price - $product->discounted_price) / $product->price) * 100, 2) . '%' }}
+                                        @else
+                                            in stock
+                                        @endif
+                                    </span>
                                     <div class="img-popup-wrap">
                                         <a class="img-popup"
                                             href="{{ URL::to('storage/product_thumbnail/' . $product->thumb_image ?? '') }}"><i
@@ -59,7 +71,13 @@
                                         <img src="{{ $imageUrl }}" alt="">
                                     @endif
 
-                                    <span class="dec-price">-10%</span>
+                                    <span class="dec-price">
+                                        @if ($product->discounted_price)
+                                            {{ number_format((($product->price - $product->discounted_price) / $product->price) * 100, 2) . '%' }}
+                                        @else
+                                            in stock
+                                        @endif
+                                    </span>
                                     <div class="img-popup-wrap">
                                         @if ($imageUrl && file_exists(public_path('storage/product_image/' . $imagePath)))
                                             <a class="img-popup" href="{{ $imageUrl }}"><i
@@ -113,55 +131,9 @@
                         <div class="mb-3">
                             {!! $product->description ?? '' !!}
                         </div>
-                        <form action="#">
-                            <div class="pro-details-size-color">
-                                <div class="pro-details-color-wrap mt-3 ">
-                                    <span>Color</span>
-                                    <div class="radio-group">
-                                        @isset($product->color)
-                                            @foreach (json_decode($product->color) as $item)
-                                                <div class='colors text-center px-2' data-value="{{ $item ?? '' }}">
-                                                    {{ $item ?? '' }}</div>
-                                            @endforeach
-                                        @endisset
-                                        <div class="form-group">
-                                            <input name="color" type="text" class="form-control" id="radio-value"
-                                                hidden />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pro-details-color-wrap mt-3">
-                                    <span>Size</span>
-                                    <div class="radio-group">
-                                        @isset($product->size)
-                                            @foreach (json_decode($product->size) as $item)
-                                                <div class='colors text-center px-3' data-value="{{ $item ?? '' }}">
-                                                    {{ $item ?? '' }}</div>
-                                            @endforeach
-                                        @endisset
-                                        <div class="form-group">
-                                            <input name="size" type="text" class="form-control" id="radio-value"
-                                                hidden />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
 
-                        <div class="pro-details-quality mt-2">
-                            <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                            </div>
-                            <div class="pro-details-cart btn-hover">
-                                <a href="#">Add To Cart</a>
-                            </div>
-                            <div class="pro-details-wishlist">
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                            </div>
-                            <div class="pro-details-compare" style="margin-left: 20px; font-size:18px;">
-                                <i class="fa-solid fa-shuffle "></i></a>
-                            </div>
-                        </div>
+                        @livewire('frontend.add-to-cart', ['product_id' => $product->id])
+
                         <div class="pro-details-meta">
                             <span>Categories :</span>
                             <ul>

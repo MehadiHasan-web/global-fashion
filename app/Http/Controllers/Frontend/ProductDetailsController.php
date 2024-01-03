@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductDetailsController extends Controller
 {
+
     public function index($slug){
         $product = Product::where('slug', $slug)->firstOrFail();
         $socials = Social::first();

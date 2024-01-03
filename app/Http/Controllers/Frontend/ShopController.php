@@ -14,4 +14,9 @@ class ShopController extends Controller
         $subcategories = SubCategory::latest()->limit(8)->get();
         return view('frontend.partials.shop.shop', compact('categories', 'subcategories'));
     }
+    public function viewCart(){
+        $categories = Category::latest()->limit(5)->get();
+        $subcategories = SubCategory::latest()->limit(8)->get();
+        return view('frontend.partials.card.view-card');
+    }
 }

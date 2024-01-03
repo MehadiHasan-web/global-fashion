@@ -16,7 +16,7 @@
                             <label>Product Name <span class="text-danger">(required)</span></label>
                             <input type="text" name="name" id=""
                                 class="form-control @error('name') is-invalide @enderror" placeholder="Write product name"
-                                value="{{ old('name') }}" required>
+                                value="{{ old('name') }}">
                             @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -27,7 +27,7 @@
 
 
                             <textarea name="description" id="editor" rows="3"
-                                class="form-control @error('description') is-invalide @enderror " placeholder="Write description" required>{{ old('description') }}</textarea>
+                                class="form-control @error('description') is-invalide @enderror " placeholder="Write description">{{ old('description') }}</textarea>
                             @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -37,7 +37,7 @@
                                 <label>Product price <span class="text-danger">(required)</span></label>
                                 <input type="number" name="price" id=""
                                     class="form-control @error('price') is-invalide @enderror"
-                                    placeholder="Write product price" value="{{ old('price') }}" required>
+                                    placeholder="Write product price" value="{{ old('price') }}">
                                 @error('price')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -67,8 +67,7 @@
                                 <label for="Category">Category <span class="text-danger">(required)</span></label>
                                 <div class="input-group">
                                     <select name="category_id"
-                                        class="custom-select @error('subcategory') is-invalide @enderror" id="category_id"
-                                        required>
+                                        class="custom-select @error('subcategory') is-invalide @enderror" id="category_id">
                                         @isset($categories)
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name ?? '' }}</option>
@@ -98,7 +97,7 @@
                             <label for="Colors">Colors <span class="text-danger">(required)</span></label>
                             <select name="color[]"
                                 class="form-control js-example-tokenizer @error('color') is-invalide @enderror"
-                                multiple="multiple" required>
+                                multiple="multiple">
                                 <option selected="selected">white</option>
                                 <option>red</option>
                                 <option>green</option>
@@ -111,7 +110,7 @@
                             <label for="Size">Size <span class="text-danger">(required)</span></label>
                             <select name="size[]"
                                 class="form-control js-example-tokenizer  @error('size') is-invalide @enderror"
-                                multiple="multiple" required>
+                                multiple="multiple">
                                 <option selected="selected">S</option>
                                 <option>M</option>
                                 <option>L</option>

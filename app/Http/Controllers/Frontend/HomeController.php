@@ -13,9 +13,7 @@ class HomeController extends Controller
 {
     public function index(){
         $sliders = Slider::latest()->get();
-        $bast_selling = Product::latest()->limit(8)->get();
-        $categories = Category::latest()->limit(5)->get();
-        $subcategories = SubCategory::latest()->limit(8)->get();
-        return view('frontend.partials.home.index', compact('sliders','bast_selling','categories','subcategories'));
+
+        return view('frontend.partials.home.index', compact('sliders'));
     }
 }

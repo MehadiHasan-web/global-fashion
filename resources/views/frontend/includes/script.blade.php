@@ -18,4 +18,3 @@
         $(this).parent().find('input').val(val);
     });
 </script>
-@livewireScripts

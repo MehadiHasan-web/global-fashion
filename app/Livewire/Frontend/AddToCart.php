@@ -3,31 +3,28 @@
 namespace App\Livewire\Frontend;
 
 use App\Models\Admin\Product;
-use App\Models\Admin\Social;
 use App\Models\Frontend\Cart;
 use Livewire\Component;
 
-class Shop extends Component
+class AddToCart extends Component
 {
-
-    public $search = '';
+    public $product_id, $product, $color='', $qty=1, $size='';
 
     public function render()
     {
-        $product = $this->search
-            ? Product::where('name', 'like', '%' . $this->search . '%')->latest()->paginate(9)
-            : Product::latest()->paginate(9);
-
-        $social = Social::first();
-        return view('livewire.frontend.shop', compact('product', 'social'));
+        $this->product = Product::where('id', $this->product_id)->firstOrFail();
+        return view('livewire.frontend.add-to-cart');
     }
 
-    public function addToCart($id){
+    public function addToCart(){
         // dd($id);
         if(auth()->user()){
             $data = [
                 'user_id' => auth()->user()->id,
-                'product_id' => $id,
+                'product_id' => $this->product_id,
+                'color' => $this->color,
+                'size' => $this->size,
+                'quantity' =>$this->qty,
             ];
             Cart::updateOrCreate($data);
             $this->dispatch('updateCartCount');
@@ -35,5 +32,4 @@ class Shop extends Component
             return redirect()->route('login');
         }
     }
-
 }

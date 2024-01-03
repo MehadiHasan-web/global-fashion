@@ -70,7 +70,8 @@
                                                                         class="fa-regular fa-heart"></i></a>
                                                             </div>
                                                             <div class="pro-same-action pro-cart">
-                                                                <a title="Add To Cart" href="#"><i
+                                                                <a title="Add To Cart"
+                                                                    wire:click="addToCart({{ $item->id }})"><i
                                                                         class="fa-solid fa-cart-shopping"></i>
                                                                     Add to cart</a>
                                                             </div>
@@ -156,7 +157,7 @@
                                                             {!! Str::limit($item->description, 300, '...') !!}
                                                         </div>
                                                         <div class="shop-list-btn btn-hover">
-                                                            <a href="#">ADD TO CART</a>
+                                                            <a wire:click="addToCart({{ $item->id }})">ADD TO CART</a>
                                                         </div>
                                                     </div>
                                                 </div>
