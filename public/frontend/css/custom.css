@@ -12,3 +12,7 @@
     background: #ffb410;
     color: #fff;
 }
+/* notify */
+div#noty_layout__topRight {
+    margin-top: 50px;
+}

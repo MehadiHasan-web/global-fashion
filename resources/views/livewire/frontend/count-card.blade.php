@@ -9,7 +9,7 @@
         <span class="count-style">{{ $cardProduct }}</span>
     </button>
     <div class="shopping-cart-content">
-        @if ($cartItems->count() > 0)
+        @if (isset($cartItems))
             <ul>
                 @foreach ($cartItems as $item)
                     <li class="single-shopping-cart">
@@ -48,7 +48,7 @@
 
         <div class="shopping-cart-btn btn-hover text-center">
             <a class="default-btn" href="{{ route('cart.page') }}">view cart</a>
-            <a class="default-btn" href="checkout.html">checkout</a>
+            <a class="default-btn" href="{{ route('order.index') }}">checkout</a>
         </div>
     </div>
 </div>

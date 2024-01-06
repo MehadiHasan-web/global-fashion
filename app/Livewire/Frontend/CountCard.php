@@ -3,6 +3,7 @@
 namespace App\Livewire\Frontend;
 
 use App\Models\Frontend\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CountCard extends Component
@@ -13,17 +14,24 @@ class CountCard extends Component
     public function render()
     {
         $this->getCartItem();
-        $this->cartItems = Cart::with('product')->where('user_id', auth()->user()->id)->latest()->get();
+        if(Auth::check()){
+            $this->cartItems = Cart::with('product')->where('user_id', auth()->user()->id)->latest()->get();
+        }
 
-        foreach ($this->cartItems as $item){
-            $price = $item->product->discounted_price ?? $item->product->price;
-            $this->total += $price * $item->quantity;
+        if($this->cartItems){
+            foreach ($this->cartItems as $item){
+                $price = $item->product->discounted_price ?? $item->product->price;
+                $this->total += $price * $item->quantity;
+            }
         }
 
         return view('livewire.frontend.count-card');
     }
     public function getCartItem(){
-        $this->cardProduct = Cart::whereUserId(auth()->user()->id)->count();
+        if(Auth::check()){
+            $this->cardProduct = Cart::whereUserId(auth()->user()->id)->count();
+        }
+
     }
     public function removeItem($id){
         $cart = Cart::whereId($id)->first();

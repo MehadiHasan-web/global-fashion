@@ -118,9 +118,13 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="logout-btn">
-                                <a href="login.html" class="btn btn-primary">Logout</a>
-                            </div>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <div class="logout-btn">
+                                    <button type="submit" class="btn btn-primary">Logout</button>
+                                </div>
+                            </form>
                         </div>
                     </li>
                 </ul>

@@ -4,6 +4,7 @@ namespace App\Livewire\Frontend;
 
 use App\Models\Admin\Product;
 use App\Models\Frontend\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class HomeProduct extends Component
@@ -27,7 +28,7 @@ class HomeProduct extends Component
             ->theme('metroui')
             ->addSuccess('Cart added successfully');
         }else{
-            return route('login');
+            return redirect()->route('login');
         }
     }
 }

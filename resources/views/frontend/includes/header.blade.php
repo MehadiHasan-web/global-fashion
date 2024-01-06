@@ -95,10 +95,21 @@
                         </a>
                         <div class="account-dropdown">
                             <ul>
-                                <li><a href="login-register.html">Login</a></li>
-                                <li><a href="login-register.html">Register</a></li>
                                 <li><a href="wishlist.html">Wishlist </a></li>
-                                <li><a href="my-account.html">my account</a></li>
+                                @if (auth()->user())
+                                    <li><a href="{{ route('profile.index') }}">my account</a></li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="border-0 p-0 bg-white">
+                                            <li><a>Log out</a></li>
+                                        </button>
+                                    </form>
+                                @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>

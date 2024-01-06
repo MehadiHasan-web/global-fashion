@@ -10,19 +10,19 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductDetailsController;
 use App\Http\Controllers\Frontend\ShopController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Order\OrderController;
 use App\Livewire\Frontend\Shop;
 use Illuminate\Support\Facades\Route;
-
-
 
 // frontend controller
 Route::group([],function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/product-details/{slug}', [ProductDetailsController::class, 'index'])->name('product.details');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop');
-    route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
+    Route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
 });
+
 
 // backend controller
 Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard'],function(){
@@ -40,9 +40,16 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::patch('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::patch('/password-update', [ProfileController::class, 'changePassword'])->name('profile.change_password');
+
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::middleware('auth')->group(function(){
+    Route::resource('/order', OrderController::class);
 });
 
 require __DIR__.'/auth.php';
