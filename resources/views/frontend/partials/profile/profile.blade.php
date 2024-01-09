@@ -15,6 +15,74 @@
             </div>
         </div>
     </div>
+    <div class="container col-8">
+        <div class="d-flex  mt-2 bg-light mb-3">
+            <div class="col text-center">
+                <div class="p-3 rounded border-1  ">
+                    <strong class="text-success">Total Order</strong>
+                    <p class="text-dark">{{ $total_order ?? '' }}</p>
+                </div>
+            </div>
+            <div class="col mr-2">
+                <div class="p-3 rounded border-1  text-center">
+                    <strong class="text-success">Order Complite</strong>
+                    <p class="text-dark">{{ $order_done ?? '' }}</p>
+                </div>
+            </div>
+            <div class="col mr-2">
+                <div class="p-3 rounded border-1  text-center">
+                    <strong class="text-warning">Panding Order</strong>
+                    <p class="text-dark">{{ $pending_order ?? '' }}</p>
+                </div>
+            </div>
+            <div class="col mr-2">
+                <div class="p-3 rounded border-1  text-center">
+                    <strong class="text-danger">Cancle Order</strong>
+                    <p class="text-dark">{{ $order_cancel ?? '' }}</p>
+                </div>
+            </div>
+        </div>
+        <table class="table text-center col-8">
+            <thead>
+                <tr>
+                    <th scope="col">Order Id</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Payment Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @isset($orders)
+                    @foreach ($orders as $item)
+                        <tr>
+                            <th scope="row">{{ $item->order_id ?? '' }}</th>
+                            <td>{{ date('d F, Y'), strtotime($item->order_id) }}</td>
+                            <td>ট{{ $item->total ?? '' }}</td>
+                            <td>Cash on delivery</td>
+                            <td>
+                                @if ($item->status == 0)
+                                    <span class="p-1 fw-bold bg-danger rounded text-white">Pending</span>
+                                @elseif ($item->status == 1)
+                                    <span class="p-1 fw-bold bg-info rounded text-white">Order Recieved</span>
+                                @elseif ($item->status == 2)
+                                    <span class="p-1 fw-bold bg-primary rounded text-white">Order Shipped</span>
+                                @elseif ($item->status == 3)
+                                    <span class="p-1 fw-bold bg-success rounded text-white">Order Done</span>
+                                @elseif ($item->status == 4)
+                                    <span class="p-1 fw-bold bg-warning rounded text-white">Order Return</span>
+                                @else
+                                    <span class="p-1 fw-bold bg-danger rounded text-white">Order Cancle</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @endisset
+
+
+            </tbody>
+        </table>
+    </div>
     <div class="checkout-area pb-80 pt-100">
         <div class="container">
             <div class="row">

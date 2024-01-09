@@ -4,6 +4,7 @@ namespace App\Livewire\Frontend;
 
 use App\Models\Admin\Product;
 use App\Models\Frontend\Cart;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class AddToCart extends Component
@@ -16,8 +17,8 @@ class AddToCart extends Component
         return view('livewire.frontend.add-to-cart');
     }
 
-    public function addToCart(){
-        // dd($id);
+    public function addToCart(Request $request, $product_id){
+        dd($request->all());
         if(auth()->user()){
             $data = [
                 'user_id' => auth()->user()->id,

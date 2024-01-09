@@ -18,3 +18,17 @@
         $(this).parent().find('input').val(val);
     });
 </script>
+{{-- quick view  --}}
+<script>
+    $(document).on('click', '.quick_view', function() {
+        var Id = $(this).attr('id');
+        $.ajax({
+            url: "{{ url('/quick-view/') }}/" + Id,
+            type: 'get',
+            success: function(data) {
+                $('#quick_view_body').html(data);
+            }
+        });
+
+    });
+</script>

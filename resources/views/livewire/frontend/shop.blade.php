@@ -66,7 +66,8 @@
                                                         </span>
                                                         <div class="product-action">
                                                             <div class="pro-same-action pro-wishlist">
-                                                                <a title="Wishlist" href="#"><i
+                                                                <a title="Wishlist" href="#"
+                                                                    wire:click.prevent="addToWishlist({{ $item->id }})"><i
                                                                         class="fa-regular fa-heart"></i></a>
                                                             </div>
                                                             <div class="pro-same-action pro-cart">
@@ -79,11 +80,14 @@
                                                                 <a title="Quick View" href="#"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal"><i
-                                                                        class="fa-solid fa-eye"></i></a>
+                                                                        class="fa-solid fa-eye quick_view"
+                                                                        id="{{ $item->id }}"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="product-content text-center">
+                                                    <div
+                                                        class="product-content
+                                                                        text-center">
                                                         <h3><a href="product-details.html">{{ $item->name ?? '' }}</a>
                                                         </h3>
                                                         <div class="product-price">
@@ -313,4 +317,18 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="quick_view_body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
 </div>

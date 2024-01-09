@@ -3,56 +3,28 @@
     <div class="side-content ">
         <!-- BEGIN .user-profile -->
         <div class="user-profile">
-            <a href="index.html" class="logo">
-                <img src="{{ asset('admin/img/logo.svg') }}" alt="Google Dashboards" />
+            <a href="{{ route('dashboard') }}" class="logo">
+                GLOBAL FASHION
             </a>
-            <h6 class="location-name">San Francisco</h6>
-            <ul class="profile-actions">
-                <li>
-                    <a href="#">
-                        <i class="icon-social-skype"></i>
-                        <span class="count-label yellow"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="count-label green"></span>
-                        <i class="icon-drafts"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html">
-                        <i class="icon-export"></i>
-                    </a>
-                </li>
-            </ul>
         </div>
         <!-- END .user-profile -->
         <!-- BEGIN .side-nav -->
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
-                <li class="active selected">
+                <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
                         </span>
-                        <span class="nav-title">Dashboards</span>
+                        <span class="nav-title">Dashboard</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse in">
+                    <ul aria-expanded="false">
                         <li>
-                            <a href='{{ route('dashboard') }}' class="current-page">Dashboard</a>
+                            <a href="{{ route('dashboard') }}">Dashboard</a>
                         </li>
 
                     </ul>
-                </li>
-                <li>
-                    <a href="widgets.html">
-                        <span class="has-icon">
-                            <i class="icon-flash-outline"></i>
-                        </span>
-                        <span class="nav-title">Graph Widgets</span>
-                    </a>
                 </li>
                 <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
@@ -145,6 +117,19 @@
                     <ul aria-expanded="false">
                         <li>
                             <a href="{{ route('social.index') }}">Index</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-regular fa-share-from-square"></i>
+                        </span>
+                        <span class="nav-title">Orders</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('order.management') }}">Orders</a>
                         </li>
                     </ul>
                 </li>

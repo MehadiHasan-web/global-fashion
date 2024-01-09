@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 <!-- Icon Font CSS -->

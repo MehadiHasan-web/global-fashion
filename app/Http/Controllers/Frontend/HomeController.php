@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Admin\Slider;
+use App\Models\Admin\Social;
 use App\Models\Admin\SubCategory;
 use Illuminate\Http\Request;
 
@@ -15,5 +16,13 @@ class HomeController extends Controller
         $sliders = Slider::latest()->get();
 
         return view('frontend.partials.home.index', compact('sliders'));
+    }
+    public function wishlist(){
+        return view('frontend.partials.wishlist');
+    }
+    public function quickView($id){
+        $product = Product::find($id);
+        $socials = Social::first();
+        return view('frontend.partials.quick-view', compact('product', 'socials'));
     }
 }

@@ -115,8 +115,15 @@
                     <div class="product-details-content ml-70">
                         <h2>{{ $product->name ?? '' }}</h2>
                         <div class="product-details-price">
-                            <span><strong>ট</strong> {{ $product->discounted_price ?? '' }}.00</span>
-                            <span class="old"><strong>ট</strong> {{ $product->price ?? '' }}.00</span>
+                            @if ($product->discounted_price)
+                                <span><strong>ট</strong>
+                                    {{ $product->discounted_price ?? '' }}.00</span>
+                                <span class="old"><strong>ট</strong>
+                                    {{ $product->price ?? '' }}.00</span>
+                            @else
+                                <span><strong>ট</strong>
+                                    {{ $product->price ?? '' }}.00</span>
+                            @endif
                         </div>
                         <div class="pro-details-rating-wrap d-none">
                             <div class="pro-details-rating">

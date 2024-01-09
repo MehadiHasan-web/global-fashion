@@ -341,7 +341,9 @@
                                 </span>
                                 <div class="product-action">
                                     <div class="pro-same-action pro-wishlist">
-                                        <a title="Wishlist" href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+                                        <a title="Wishlist" href="#"
+                                            wire:click.prevent="addToWishlist({{ $item->id }})"><i
+                                                class="fa-regular fa-heart"></i></a>
                                     </div>
                                     <div class="pro-same-action pro-cart">
                                         <a title="Add To Cart" wire:click="addToCart({{ $item->id }})"><i
@@ -350,13 +352,15 @@
                                             to cart</a>
                                     </div>
                                     <div class="pro-same-action pro-quickview">
-                                        <a title="Quick View" href="#" data-bs-toggle="modal"
+                                        <a class="quick_view" title="Quick View" href="#"
+                                            id="{{ $item->id }}" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content text-center">
-                                <h3><a href="product-details.html">{{ $item->name ?? '' }}</a></h3>
+                                <h3><a href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
+                                </h3>
 
                                 <div class="product-price">
                                     @if ($item->discounted_price)
@@ -683,4 +687,23 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="quick_view_body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
+
+
 </div>

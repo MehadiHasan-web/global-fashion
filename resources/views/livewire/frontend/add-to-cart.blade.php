@@ -25,7 +25,8 @@
                         @endforeach
                     @endisset
                     <div class="form-group">
-                        <input wire:model="size" type="text" class="form-control" id="radio-value" hidden />
+                        <input wire:model="size" type="text" class="form-control" id="radio-value" value="size"
+                            hidden />
                     </div>
                 </div>
             </div>

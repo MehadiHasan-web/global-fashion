@@ -13,7 +13,7 @@
                 <div class="logo">
                     <a href="{{ route('home') }}">
                         <!-- <img alt="" src="{{ asset('frontend/img/logo/logo.png') }}"> -->
-                        <h2>SHAMS BD</h2>
+                        <strong style="font-size: 20px">GLOBAL FASHION</strong>
                     </a>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                         </a>
                         <div class="account-dropdown">
                             <ul>
-                                <li><a href="wishlist.html">Wishlist </a></li>
+                                <li><a href="{{ route('wishlist') }}">Wishlist </a></li>
                                 @if (auth()->user())
                                     <li><a href="{{ route('profile.index') }}">my account</a></li>
                                     <form action="{{ route('logout') }}" method="POST">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="same-style header-wishlist">
-                        <a href="wishlist.html">
+                        <a href="{{ route('wishlist') }}">
                             <svg style="width: 23px; color: #3c3939;" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"

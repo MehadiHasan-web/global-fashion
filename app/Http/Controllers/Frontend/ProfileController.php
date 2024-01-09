@@ -5,12 +5,21 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        return view('frontend.partials.profile.profile', compact('user'));
+        $orders = DB::table('orders')->orderBy('created_at', 'DESC')->where('user_id', Auth::id())->limit(10)->get();
+        $total_order = DB::table('orders')->where('user_id', Auth::id())->count();
+        $order_done = DB::table('orders')->where('user_id', Auth::id())->where('status', 3)->count();
+        $order_cancel = DB::table('orders')->where('user_id', Auth::id())->where('status', 5)->count();
+        $pending_order = DB::table('orders')->where('user_id', Auth::id())->where('status', 0)->count();
+        // dd($order_cancel);
+
+        return view('frontend.partials.profile.profile', compact('user', 'orders','total_order','order_done','order_cancel', 'pending_order'));
     }
     public function updateProfile(Request $request){
         $user = User::find(auth()->user()->id);

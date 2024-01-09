@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderManagementController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Order\OrderController;
 use App\Livewire\Frontend\Shop;
+use App\Livewire\Frontend\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 // frontend controller
@@ -21,6 +23,8 @@ Route::group([],function () {
     Route::get('/product-details/{slug}', [ProductDetailsController::class, 'index'])->name('product.details');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop');
     Route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
+    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist');
+    Route::get('/quick-view/{id}', [HomeController::class, 'quickView']);
 });
 
 
@@ -34,6 +38,9 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
     Route::resource('product', ProductController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('social', SocialController::class);
+    Route::get('/orders', [OrderManagementController::class, 'index'])->name('order.management');
+    Route::get('/orders-received', [OrderManagementController::class, 'receivedOrder'])->name('order.received');
+    Route::get('/orders-details/{id}', [OrderManagementController::class, 'orderDetails'])->name('order.details');
 
 });
 
