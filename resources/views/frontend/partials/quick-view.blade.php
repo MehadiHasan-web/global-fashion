@@ -56,7 +56,7 @@
             <p>
                 {!! $product->description ?? '' !!}
             </p>
-            {{-- @livewire('frontend.add-to-cart', ['product_id' => $product->id]) --}}
+            @livewire('frontend.add-to-cart', ['product_id' => $product->id])
             <div class="pro-details-meta">
                 <span>Categories :</span>
                 <ul>

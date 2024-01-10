@@ -9,54 +9,62 @@
     <div class="col-lg-12 col-sm-12">
         <div class="card">
             <div class="card-body">
-                <div>
-                    <strong>Name: </strong>
-                    <span class="ml-1">{{ $order->fname ?? '' }} {{ $order->lname ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Email: </strong>
-                    <span class="ml-1">{{ $order->email ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Country: </strong>
-                    <span class="ml-1">{{ $order->country ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Country: </strong>
-                    <span class="ml-1">{{ $address->country ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Address: </strong>
-                    <span class="ml-1">{{ $order->address ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>City: </strong>
-                    <span class="ml-1">{{ $order->city ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Thana: </strong>
-                    <span class="ml-1">{{ $order->thana ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>zip: </strong>
-                    <span class="ml-1">{{ $address->zip ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Number: </strong>
-                    <span class="ml-1">{{ $order->number ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Additional info: </strong>
-                    <span class="ml-1">{{ $order->additional_info ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Total Price: </strong>
-                    <span class="ml-1">{{ $order->total ?? '' }}</span>
-                </div>
-                <div>
-                    <strong>Order Id: </strong>
-                    <span class="ml-1">{{ $order->order_id ?? '' }}</span>
-                </div>
+
+                <table class="table table-borderless col-4 ml-3">
+                    <tbody class="border">
+                        <tr>
+                            <th>Name</th>
+                            <td class="ml-1">: {{ $order->fname ?? '' }} {{ $order->lname ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td class="ml-1">: {{ $order->email ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Country</th>
+                            <td class="ml-1">: {{ $order->country ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Country</th>
+                            <td class="ml-1">: {{ $address->country ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td class="ml-1">: {{ $order->address ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td class="ml-1">: {{ $order->city ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Thana</th>
+                            <td class="ml-1">: {{ $order->thana ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>zip</th>
+                            <td class="ml-1">: {{ $address->zip ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Number</th>
+                            <td class="ml-1">: {{ $order->number ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Additional info</th>
+                            <td class="ml-1">: {{ $order->additional_info ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total Price</th>
+                            <td class="ml-1">: {{ $order->total ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Order Id</th>
+                            <td class="ml-1">: {{ $order->order_id ?? '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
 
 
                 <div class="mt-3">

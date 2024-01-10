@@ -4,12 +4,13 @@ namespace App\Livewire\Frontend;
 
 use App\Models\Admin\Product;
 use App\Models\Frontend\Cart;
+use App\Models\Frontend\Wishlist;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
 class AddToCart extends Component
 {
-    public $product_id, $product, $color='', $qty=1, $size='';
+    public $product_id, $product, $color='', $qty=1, $size;
 
     public function render()
     {
@@ -17,8 +18,7 @@ class AddToCart extends Component
         return view('livewire.frontend.add-to-cart');
     }
 
-    public function addToCart(Request $request, $product_id){
-        dd($request->all());
+    public function addToCart(){
         if(auth()->user()){
             $data = [
                 'user_id' => auth()->user()->id,
@@ -33,4 +33,17 @@ class AddToCart extends Component
             return redirect()->route('login');
         }
     }
+        // wishlist
+        public function addToWishlist($id){
+            if(auth()->user()){
+                $data = [
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $id,
+                ];
+                Wishlist::updateOrCreate($data);
+                noty()->theme('metroui')->addSuccess('Wishlist added successfully');
+            }else{
+                return redirect()->route('login');
+            }
+        }
 }
