@@ -16,3 +16,14 @@
 div#noty_layout__topRight {
     margin-top: 50px;
 }
+/* custom products  */
+.product-wrap .order .order-button{
+    background-color: #002e45; color: white;
+}
+.product-wrap .order .order-button:hover{
+     background-color: rgb(213, 15, 15);
+}
+.row .card:hover{
+    border-color: #002e45;
+}
+

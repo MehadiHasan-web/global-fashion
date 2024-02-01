@@ -16,7 +16,9 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Image</th>
                             <th>Name</th>
+                            <th>Discount</th>
                             <th>Description</th>
                             <th>Action</th>
                         </tr>
@@ -26,7 +28,19 @@
                             @foreach ($categories as $key => $item)
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $item->name ?? '' }}</td>
+                                    <td>
+                                        @isset($item->image)
+                                            <div class="">
+                                                <img style="width: 40px; height:40px; "
+                                                    src="{{ URL::to('storage/categories/' . $item->image) }}" alt=""
+                                                    class="rounded">
+                                            </div>
+                                        @endisset
+                                    </td>
+                                    <td>
+                                        {{ $item->name ?? '' }}
+                                    </td>
+                                    <td>{{ $item->discount ?? 'No Discount' }}</td>
                                     <td>{{ Str::limit($item->description, 20, '...') }}</td>
                                     <td>
                                         <div class="d-flex">

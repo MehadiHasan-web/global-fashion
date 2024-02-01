@@ -9,6 +9,12 @@
     <div class="col-lg-12 col-sm-12">
         <div class="card">
             <div class="card-body">
+                @isset($category->image)
+                    <div class="">
+                        <img style="width: 160px; height:160px; " src="{{ URL::to('storage/categories/' . $category->image) }}"
+                            alt="" class="rounded">
+                    </div>
+                @endisset
                 <div>
                     <strong>Name: </strong>
                     <p class="ml-5">{{ $category->name ?? '' }}</p>
