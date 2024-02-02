@@ -70,8 +70,8 @@ class ProductController extends Controller
             File::makeDirectory($reviewDirectory, 0755, true, true);
 
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-            $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(570, 680)->save('storage/product_thumbnail/' . $uniqueName);
+            $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . 'webp';
+            Image::make($image)->resize(1280, 1280)->save('storage/product_thumbnail/' . $uniqueName, 90, 'webp');
 
             $data['thumb_image'] = $uniqueName;
         }
@@ -83,8 +83,8 @@ class ProductController extends Controller
                 File::makeDirectory($reviewDirectory, 0755, true, true);
 
                 $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(570, 680)->save('storage/product_image/' . $uniqueName);
+                $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . 'webp';
+                Image::make($image)->resize(1280, 1280)->save('storage/product_image/' . $uniqueName, 90, 'webp');
 
                  array_push($images, $uniqueName);
             }
@@ -152,8 +152,8 @@ class ProductController extends Controller
                 unlink($filePath);
             }
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-            $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(570, 680)->save('storage/product_thumbnail/' . $uniqueName);
+            $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . 'webp';
+            Image::make($image)->resize(1280, 1280)->save('storage/product_thumbnail/' . $uniqueName, 90, 'webp');
 
             $data['thumb_image'] = $uniqueName;
         }
@@ -171,8 +171,8 @@ class ProductController extends Controller
                     }
                 }
                 $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(570, 680)->save('storage/product_image/' . $uniqueName);
+                $uniqueName = $originalName.'_'.Str::random(20) . '_' . uniqid() . '.' . 'webp';
+                Image::make($image)->resize(1280, 1280)->save('storage/product_image/' . $uniqueName, 90, 'webp');
 
                  array_push($images, $uniqueName);
             }

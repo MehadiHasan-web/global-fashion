@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('discount')->nullable();
+            $table->boolean('top_category')->default(false);
             $table->text('description')->nullable();
             $table->timestamps();
         });

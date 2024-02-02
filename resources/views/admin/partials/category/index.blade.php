@@ -20,6 +20,7 @@
                             <th>Name</th>
                             <th>Discount</th>
                             <th>Description</th>
+                            <th>Top Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,6 +43,19 @@
                                     </td>
                                     <td>{{ $item->discount ?? 'No Discount' }}</td>
                                     <td>{{ Str::limit($item->description, 20, '...') }}</td>
+                                    <td class="d-flex justify-content-center">
+                                        <div class="mt-2">
+                                            @if ($item->top_category == true)
+                                                <a href="{{ route('removeTopCategory', $item->id) }}"
+                                                    class="mr-2 btn btn-danger rounded p-1"><i
+                                                        class="fa-solid fa-xmark px-2"></i></a>
+                                            @else
+                                                <a href="{{ route('addTopCategory', $item->id) }}"
+                                                    class="mr-2 btn btn-info rounded p-1"><i
+                                                        class="fa-solid fa-check px-2"></i></a>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('category.show', $item->id) }}"

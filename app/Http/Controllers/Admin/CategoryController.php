@@ -126,4 +126,5 @@ class CategoryController extends Controller
         $category->delete();
         response('Deleted Successfully');
     }
+
 }

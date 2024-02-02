@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Frontend\Cart;
 use App\Models\Frontend\Wishlist;
@@ -10,10 +11,12 @@ use Livewire\Component;
 
 class HomeProduct extends Component
 {
-    public $bast_selling;
+    // public $bast_selling;
+    public $categories;
     public function render()
     {
-        $this->bast_selling = Product::latest()->limit(8)->get();
+        // $this->bast_selling = Product::latest()->limit(16)->get();
+        $this->categories = Category::with('products')->get();
         return view('livewire.frontend.home-product');
     }
 

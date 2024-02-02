@@ -1,14 +1,16 @@
-<div class="tab-content jump">
-    @foreach ($categories as $category)
-        @if ($category->products()->exists())
-            <div class="section-title text-center mb-3">
-                <h2>{{ $category->name ?? '' }}</h2>
-            </div>
-        @endif
+@extends('frontend.master.master')
+@section('title')
+    Global Fashion
+@endsection
+@section('content')
+    <div class="container my-4">
+        <div class="section-title text-center mb-5">
+            <h2>{{ $categoryProducts->name ?? '' }}</h2>
+        </div>
         <div class="tab-pane active" id="">
             <div class="row">
-                @isset($category->products)
-                    @foreach ($category->products as $item)
+                @isset($categoryProducts->products)
+                    @foreach ($categoryProducts->products as $item)
                         <div class="col-xl-3 col-md-6 col-lg-3 col-sm-6 ">
                             <div class="product-wrap mb-25 card rounded shadow-lg">
                                 <div class="product-img p-2">
@@ -75,23 +77,23 @@
                 @endisset
             </div>
         </div>
-    @endforeach
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="quick_view_body">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="quick_view_body">
 
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Modal end -->
+
+
+
     </div>
-    <!-- Modal end -->
-
-
-
-</div>
+@endsection

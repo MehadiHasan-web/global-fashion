@@ -5,61 +5,36 @@
 @section('content')
     @include('frontend.partials.slider')
 
-    <div class="suppoer-area pt-100 pb-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="support-wrap mb-30 support-1">
-                        <div class="support-icon">
-                            <img class="animated" src="{{ asset('frontend/img/icon-img/support-1.png') }}" alt="">
+    <div class="container my-2">
+        <h3>Top Categories</h3>
+        <div class="d-flex flex-wrap">
+            {{-- item --}}
+            @isset($top_category)
+                @foreach ($top_category as $item)
+                    <a href="{{ route('categoryProducts', $item->slug) }}">
+                        <div class="col-6 col-sm-4 col-md-2 col-lx-2 col-gl-2 p-1 mb-2">
+                            <a href="{{ $item->slug ?? '' }}">
+                                <div class="card shadow">
+                                    <img class="card-img-top p-1 rounded"
+                                        src="{{ URL::to('storage/categories/' . $item->image) }}" alt="Card image cap">
+                                    <div class="card-body p-2">
+                                        <h5 class="card-title m-0 text-center">{{ $item->name ?? '' }}</h5>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="support-content">
-                            <h5>Free Shipping</h5>
-                            <p>Free shipping on all order</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="support-wrap mb-30 support-2">
-                        <div class="support-icon">
-                            <img class="animated" src="{{ asset('frontend/img/icon-img/support-2.png') }}" alt="">
-                        </div>
-                        <div class="support-content">
-                            <h5>Support 24/7</h5>
-                            <p>Free shipping on all order</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="support-wrap mb-30 support-3">
-                        <div class="support-icon">
-                            <img class="animated" src="{{ asset('frontend/img/icon-img/support-3.png') }}" alt="">
-                        </div>
-                        <div class="support-content">
-                            <h5>Money Return</h5>
-                            <p>Free shipping on all order</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="support-wrap mb-30 support-4">
-                        <div class="support-icon">
-                            <img class="animated" src="{{ asset('frontend/img/icon-img/support-4.png') }}" alt="">
-                        </div>
-                        <div class="support-content">
-                            <h5>Order Discount</h5>
-                            <p>Free shipping on all order</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </a>
+                @endforeach
+            @endisset
+
+
+
+
         </div>
     </div>
+
     <div class="product-area pb-60">
         <div class="container">
-            <div class="section-title text-center mb-3">
-                <h2>DAILY DEALS!</h2>
-            </div>
             @include('frontend.partials.home.product')
         </div>
     </div>

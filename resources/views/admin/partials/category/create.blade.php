@@ -36,6 +36,7 @@
                         @enderror
                     </div>
 
+
                     <div class="d-flex mt-2">
                         <div class="form-group col-6">
                             <label for="exampleFormControlTextarea1">Name <span
@@ -70,6 +71,7 @@
                         <a href="{{ route('category.index') }}" class="btn btn-success rounded-pill mr-2">Cancle</a>
                         <button type="submit" class="btn btn-info rounded-pill">Save</button>
                     </div>
+
                 </form>
 
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\TopCategory;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductDetailsController;
 use App\Http\Controllers\Frontend\ShopController;
@@ -25,6 +26,7 @@ Route::group([],function () {
     Route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
     Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist');
     Route::get('/quick-view/{id}', [HomeController::class, 'quickView']);
+    Route::get('/{slug}', [HomeController::class, 'categoryProducts'])->name('categoryProducts');
 });
 
 
@@ -41,6 +43,8 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
     Route::get('/orders', [OrderManagementController::class, 'index'])->name('order.management');
     Route::get('/orders-received', [OrderManagementController::class, 'receivedOrder'])->name('order.received');
     Route::get('/orders-details/{id}', [OrderManagementController::class, 'orderDetails'])->name('order.details');
+    Route::get('/category/add-top/{id}', [TopCategory::class, 'addTopCategory'])->name('addTopCategory');
+    Route::get('/category/remove-top/{id}', [TopCategory::class, 'removeTopCategory'])->name('removeTopCategory');
 
 });
 
