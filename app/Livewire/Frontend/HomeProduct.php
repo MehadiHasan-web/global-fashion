@@ -8,6 +8,7 @@ use App\Models\Frontend\Cart;
 use App\Models\Frontend\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Session;
 
 class HomeProduct extends Component
 {
@@ -20,20 +21,29 @@ class HomeProduct extends Component
         return view('livewire.frontend.home-product');
     }
 
+    // add to card
     public function addToCart($id){
-        if(auth()->user()){
+        if (!session()->has('session_id')) {
+            $session_id = mt_rand(100000, 999999);
+            session(['session_id' => $session_id]);
+        } else {
+            $session_id = session('session_id');
+        }
+
             $data = [
-                'user_id' => auth()->user()->id,
                 'product_id' => $id,
+                'session_id' => $session_id,
             ];
+            if(Auth::check()){
+                $data['user_id'] = auth()->user()->id;
+            }
             Cart::updateOrCreate($data);
             $this->dispatch('updateCartCount');
             noty()
             ->theme('metroui')
             ->addSuccess('Cart added successfully');
-        }else{
-            return redirect()->route('login');
-        }
+            return redirect()->route('order.index');
+
     }
     // wishlist
     public function addToWishlist($id){

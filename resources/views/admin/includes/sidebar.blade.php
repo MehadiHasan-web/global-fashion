@@ -123,13 +123,26 @@
                 <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
-                            <i class="fa-regular fa-share-from-square"></i>
+                            <i class="fa-brands fa-jedi-order"></i>
                         </span>
                         <span class="nav-title">Orders</span>
                     </a>
                     <ul aria-expanded="false">
                         <li>
                             <a href="{{ route('order.management') }}">Orders</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="fa-regular fa-id-badge"></i>
+                        </span>
+                        <span class="nav-title">Contact</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('contact.index') }}">Contact Us</a>
                         </li>
                     </ul>
                 </li>

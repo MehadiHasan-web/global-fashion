@@ -12,11 +12,21 @@ class ProfileController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        $orders = DB::table('orders')->orderBy('created_at', 'DESC')->where('user_id', Auth::id())->limit(10)->get();
-        $total_order = DB::table('orders')->where('user_id', Auth::id())->count();
-        $order_done = DB::table('orders')->where('user_id', Auth::id())->where('status', 3)->count();
-        $order_cancel = DB::table('orders')->where('user_id', Auth::id())->where('status', 5)->count();
-        $pending_order = DB::table('orders')->where('user_id', Auth::id())->where('status', 0)->count();
+
+        $ordersQuery = DB::table('orders')->orderBy('created_at', 'DESC');
+
+        if ($user) {
+            $ordersQuery->where('user_id', Auth::id());
+        } else {
+            $ordersQuery->where('session_id', session('session_id'));
+        }
+
+        $orders = $ordersQuery->limit(10)->get();
+        $total_order = $ordersQuery->count();
+        $order_done = $ordersQuery->where('status', 3)->count();
+        $order_cancel = $ordersQuery->where('status', 5)->count();
+        $pending_order = $ordersQuery->where('status', 0)->count();
+
         // dd($order_cancel);
 
         return view('frontend.partials.profile.profile', compact('user', 'orders','total_order','order_done','order_cancel', 'pending_order'));

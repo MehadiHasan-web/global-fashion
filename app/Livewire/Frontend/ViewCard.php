@@ -6,6 +6,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\SubCategory;
 use App\Models\Frontend\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class ViewCard extends Component
@@ -19,8 +20,13 @@ class ViewCard extends Component
 
     public function loadCart()
     {
+        // $this->cartItems = Session::get('cart', []);
+        // $this->calculateTotal();
         if (Auth::check()) {
             $this->cartItems = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+            $this->calculateTotal();
+        }else{
+            $this->cartItems = Cart::with('product')->where('session_id', session('session_id'))->get();
             $this->calculateTotal();
         }
     }
@@ -41,6 +47,7 @@ class ViewCard extends Component
             $price = $item->product->discounted_price ?? $item->product->price;
             $this->total += $price * $item->quantity;
         }
+
     }
 
     public function decrementQuantity($id){

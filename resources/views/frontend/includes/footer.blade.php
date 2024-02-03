@@ -54,8 +54,8 @@
                         <ul>
                             <li><a href="{{ $socials->facebook ?? '' }}">Facebook</a></li>
                             <li><a href="{{ $socials->twitter ?? '' }}">Twitter</a></li>
-                            <li><a href="{{ $socials->instagram }}">Instagram</a></li>
-                            <li><a href="{{ $socials->linkedin }}">Linkedin</a></li>
+                            <li><a href="{{ $socials->instagram ?? '' }}">Instagram</a></li>
+                            <li><a href="{{ $socials->linkedin ?? '' }}">Linkedin</a></li>
                         </ul>
                     </div>
                 </div>

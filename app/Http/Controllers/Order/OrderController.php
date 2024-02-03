@@ -18,9 +18,22 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $user = Order::where('user_id', auth()->user()->id)->first();
+
         $total='';
-        $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+        if (Auth::check()) {
+            $user = Order::where('user_id', auth()->user()->id)->first();
+            $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+        } else {
+            $session_id = session('session_id');
+            if ($session_id) {
+                $user = Order::where('session_id', $session_id)->first();
+                $products = Cart::with('product')->where('session_id', $session_id)->get();
+            } else {
+                return redirect()->route('login')->with('message', 'Please log in to view your orders.');
+            }
+        }
+
+
         foreach ($products as $item) {
             $price = $item->product->discounted_price ?? $item->product->price;
             $total = (float)$total + $price * $item->quantity;
@@ -42,16 +55,30 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $request->validate([
+            'fname' => 'required',
+            'lname' => 'nullable',
+            'address' => 'required',
+            'city' => 'required',
+            'thana' => 'nullable',
+            'zip' => 'nullable',
+            'number' => 'required',
+            'additional_info' => 'nullable',
+
+        ]);
         // dd($request->all());
         $total='';
-        $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+        if(Auth::check()){
+            $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
+        }else{
+            $products = Cart::with('product')->where('session_id', session('session_id'))->get();
+        }
         foreach ($products as $item) {
             $price = $item->product->discounted_price ?? $item->product->price;
             $total = (float)$total + $price * $item->quantity;
         }
 
        $data = [
-        'user_id' => Auth::id(),
         'fname' => $request->fname,
         'lname' => $request->lname,
         'address' => $request->address,
@@ -69,6 +96,11 @@ class OrderController extends Controller
         'month' => date('F'),
         'year' => date('Y'),
        ];
+       if(Auth::check()){
+        $data['user_id'] =   Auth::id();
+       }else{
+        $data['session_id'] = session('session_id');
+       }
 
        $order_id = DB::table('orders')->insertGetId($data);
 

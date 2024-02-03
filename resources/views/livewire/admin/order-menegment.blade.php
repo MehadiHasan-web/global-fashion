@@ -1,6 +1,7 @@
 <div class="col-lg-12 col-sm-12">
     <div class="card">
         <div class="card-header d-flex justify-content-end">
+            <a href="{{ route('order.history') }}" class="btn btn-success rounded-pill mr-2">Order History</a>
             <a href="{{ route('order.received') }}" class="btn btn-success rounded-pill">Received Order</a>
         </div>
         <div class="card-body">

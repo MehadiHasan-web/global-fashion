@@ -32,24 +32,6 @@
                                         @endif
 
                                     </span>
-                                    <div class="product-action d-none">
-                                        <div class="pro-same-action pro-wishlist">
-                                            <a title="Wishlist" href="#"
-                                                wire:click.prevent="addToWishlist({{ $item->id }})"><i
-                                                    class="fa-regular fa-heart"></i></a>
-                                        </div>
-                                        <div class="pro-same-action pro-cart">
-                                            <a title="Add To Cart" wire:click="addToCart({{ $item->id }})"><i
-                                                    class="fa-solid fa-cart-shopping"></i>
-                                                Add
-                                                to cart</a>
-                                        </div>
-                                        <div class="pro-same-action pro-quickview">
-                                            <a class="quick_view" title="Quick View" href="#" id="{{ $item->id }}"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                    class="fa-solid fa-eye"></i></a>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="product-content text-center">
                                     <a href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
@@ -67,8 +49,8 @@
                                         @endif
                                     </div>
                                     <div class="p-2 order">
-                                        <button type="button" class="btn btn-light col-12 bold order-button"
-                                            style="">অর্ডার করুন</button>
+                                        <a href="{{ route('addToCart', $item->id) }}" type="button"
+                                            class="btn btn-light col-12 bold order-button" style="">অর্ডার করুন</a>
                                     </div>
                                 </div>
                             </div>

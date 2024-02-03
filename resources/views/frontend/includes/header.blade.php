@@ -1,6 +1,7 @@
 @php
     $categories = DB::table('categories')
         ->orderBy('updated_at', 'desc')
+        ->take(3)
         ->get();
     $subcategories = DB::table('sub_categories')
         ->orderBy('updated_at', 'desc')
@@ -22,40 +23,15 @@
                     <nav>
                         <ul>
                             <li><a href="{{ route('home') }}">Home</i></a></li>
-                            <li><a href="{{ route('shop') }}"> Shop <i class="fa fa-angle-down"></i> </a>
-                                <ul class="mega-menu">
-                                    <li>
-                                        <ul>
-                                            <li class="mega-menu-title"><a href="#">Categories</a></li>
-                                            @isset($categories)
-                                                @foreach ($categories as $item)
-                                                    <li><a href="#">{{ $item->name }}</a></li>
-                                                @endforeach
-                                            @endisset
+                            @isset($categories)
+                                @foreach ($categories as $item)
+                                    <li><a href="{{ route('categoryProducts', $item->slug) }}">{{ $item->name }}</a></li>
+                                @endforeach
+                            @endisset
 
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li class="mega-menu-title"><a href="#">Sub Category</a></li>
-                                            @isset($subcategories)
-                                                @foreach ($subcategories as $item)
-                                                    <li><a href="#">{{ $item->name }}</a></li>
-                                                @endforeach
-                                            @endisset
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li class="mega-menu-img"><a href="shop.html"><img
-                                                        src="{{ asset('frontend/img/banner/banner-12.png') }}"
-                                                        alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li><a href="{{ route('shop') }}">Shops<i class="fa fa-angle-down"></i> </a>
                             </li>
-                            <li><a href="contact.html"> Contact</a></li>
+                            <li><a href="{{ route('contact.us') }}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -95,9 +71,9 @@
                         </a>
                         <div class="account-dropdown">
                             <ul>
+                                <li><a href="{{ route('profile.index') }}">my account</a></li>
                                 <li><a href="{{ route('wishlist') }}">Wishlist </a></li>
                                 @if (auth()->user())
-                                    <li><a href="{{ route('profile.index') }}">my account</a></li>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         @method('POST')

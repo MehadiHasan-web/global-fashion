@@ -11,19 +11,17 @@
             {{-- item --}}
             @isset($top_category)
                 @foreach ($top_category as $item)
-                    <a href="{{ route('categoryProducts', $item->slug) }}">
-                        <div class="col-6 col-sm-4 col-md-2 col-lx-2 col-gl-2 p-1 mb-2">
-                            <a href="{{ $item->slug ?? '' }}">
-                                <div class="card shadow">
-                                    <img class="card-img-top p-1 rounded"
-                                        src="{{ URL::to('storage/categories/' . $item->image) }}" alt="Card image cap">
-                                    <div class="card-body p-2">
-                                        <h5 class="card-title m-0 text-center">{{ $item->name ?? '' }}</h5>
-                                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 col-lx-2 col-gl-2 p-1 mb-2">
+                        <a href="{{ route('categoryProducts', $item->slug) }}">
+                            <div class="card shadow">
+                                <img class="card-img-top p-1 rounded" src="{{ URL::to('storage/categories/' . $item->image) }}"
+                                    alt="Card image cap">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title m-0 text-center">{{ $item->name ?? '' }}</h5>
                                 </div>
-                            </a>
-                        </div>
-                    </a>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             @endisset
 

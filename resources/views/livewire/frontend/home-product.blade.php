@@ -65,8 +65,9 @@
                                         @endif
                                     </div>
                                     <div class="p-2 order">
-                                        <button type="button" class="btn btn-light col-12 bold order-button"
-                                            style="">অর্ডার করুন</button>
+                                        <button wire:click="addToCart({{ $item->id }})" type="button"
+                                            class="btn btn-light col-12 bold order-button" style="">অর্ডার
+                                            করুন</button>
                                     </div>
                                 </div>
                             </div>
