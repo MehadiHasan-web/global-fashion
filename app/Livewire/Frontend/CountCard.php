@@ -16,6 +16,8 @@ class CountCard extends Component
         $this->getCartItem();
         if(Auth::check()){
             $this->cartItems = Cart::with('product')->where('user_id', auth()->user()->id)->latest()->get();
+        }else{
+            $this->cartItems = Cart::with('product')->where('session_id', session('session_id'))->get();
         }
 
         if($this->cartItems){
@@ -30,6 +32,8 @@ class CountCard extends Component
     public function getCartItem(){
         if(Auth::check()){
             $this->cardProduct = Cart::whereUserId(auth()->user()->id)->count();
+        }else{
+            $this->cardProduct = Cart::where('session_id', session('session_id'))->count();
         }
 
     }

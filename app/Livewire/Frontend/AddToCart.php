@@ -19,19 +19,25 @@ class AddToCart extends Component
     }
 
     public function addToCart(){
-        if(auth()->user()){
-            $data = [
-                'user_id' => auth()->user()->id,
-                'product_id' => $this->product_id,
-                'color' => $this->color,
-                'size' => $this->size,
-                'quantity' =>$this->qty,
-            ];
-            Cart::updateOrCreate($data);
-            $this->dispatch('updateCartCount');
-        }else{
-            return redirect()->route('login');
+        $data = [
+            'product_id' => $this->product_id,
+            'color' => $this->color,
+            'size' => $this->size,
+            'quantity' =>$this->qty,
+        ];
+        if (!session()->has('session_id')) {
+            $session_id = mt_rand(100000, 999999);
+            session(['session_id' => $session_id]);
+        } else {
+            $session_id = session('session_id');
         }
+        if(auth()->user()){
+           $data['user_id'] = auth()->user()->id;
+        }else{
+            $data['session_id'] = $session_id;
+        }
+        Cart::updateOrCreate($data);
+        $this->dispatch('updateCartCount');
     }
         // wishlist
         public function addToWishlist($id){

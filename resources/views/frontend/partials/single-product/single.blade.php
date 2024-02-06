@@ -302,7 +302,7 @@
             </div>
         </div>
     </div>
-    <div class="related-product-area pb-95">
+    <div class="related-product-area pb-95 d-none">
         <div class="container">
             <div class="section-title text-center mb-50">
                 <h2>Related products</h2>
