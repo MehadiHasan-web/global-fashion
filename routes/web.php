@@ -31,6 +31,7 @@ Route::group([],function () {
     Route::resource('/order', OrderController::class);
     Route::get('/product-order/{id}', [HomeController::class, 'addToCart'])->name('addToCart');
     Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.us');
+    Route::post('/search', [HomeController::class, 'search'])->name('search');
 
 });
 

@@ -1,11 +1,6 @@
 @php
-    $categories = DB::table('categories')
-        ->orderBy('updated_at', 'desc')
-        ->take(3)
-        ->get();
-    $subcategories = DB::table('sub_categories')
-        ->orderBy('updated_at', 'desc')
-        ->get();
+    $categories = DB::table('categories')->orderBy('updated_at', 'desc')->take(3)->get();
+    $subcategories = DB::table('sub_categories')->orderBy('updated_at', 'desc')->get();
 @endphp
 <header class="header-area header-padding-1 sticky-bar header-res-padding clearfix">
     <div class="container-fluid">
@@ -47,9 +42,11 @@
                             </svg>
                         </a>
                         <div class="search-content">
-                            <form action="#">
-                                <input type="text" placeholder="Search" />
-                                <button class="button-search">
+                            <form action="{{ route('search') }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <input name="search" type="text" placeholder="Search" />
+                                <button class="button-search" type="submit">
                                     <svg style="width: 23px; color: #3c3939;" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                         class="w-6 h-6">

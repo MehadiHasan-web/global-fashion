@@ -62,5 +62,11 @@ class HomeController extends Controller
         $social = Social::first();
        return view('frontend.partials.contactus.contactus', compact('contact', 'social'));
     }
+    public function search(Request $request){
+        $searchTerm = $request->search;
+       $searchResults =  Product::where('name', 'like', '%' . $searchTerm . '%')->get();
+    //    dd($searchResults);
+       return view('frontend.partials.searchResult', compact('searchResults'));
+    }
 
 }
