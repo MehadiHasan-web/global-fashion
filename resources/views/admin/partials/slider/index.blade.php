@@ -16,8 +16,9 @@
                     <thead>
                         <tr>
                             <th>SL</th>
-                            <th></th>
+                            <th>Name</th>
                             <th>Image</th>
+                            <th>Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,7 +36,13 @@
                                     <td>
                                         <img style="width:80px; height:80px" src="{{ URL::to('storage/slider/' . $item->image) }}"
                                             alt="" class="rounded">
-
+                                    </td>
+                                    <td>
+                                        @foreach ($categories as $category)
+                                            @if ($category->id == $item->category_id)
+                                                {{ $category->name ?? '' }}
+                                            @endif
+                                        @endforeach
                                     </td>
                                     <td>
                                         <div class="d-flex">

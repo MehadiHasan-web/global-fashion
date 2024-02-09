@@ -51,6 +51,26 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="form-group col-6 p-0 pr-1">
+                        <label for="Category">Related Category <span class="text-danger">(required)</span></label>
+                        <div class="input-group">
+                            <select name="category_id" class="custom-select  @error('category_id') is-visiable @enderror"
+                                id="category_id">
+                                @isset($categories)
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id ?? '' }}"
+                                            {{ $item->id == $slider->category_id ? 'selected' : '' }}>
+                                            {{ $item->name ?? '' }}
+                                        </option>
+                                    @endforeach
+                                @endisset
+
+                            </select>
+                        </div>
+                        @error('category_id')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                     <div class="d-flex">
                         <a href="{{ route('slider.index') }}" class="btn btn-success rounded-pill mr-2">Cancle</a>
                         <button type="submit" class="btn btn-info rounded-pill">Save</button>

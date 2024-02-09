@@ -135,9 +135,6 @@
                             </div>
                             <span class="d-none"><a href="#">3 Reviews</a></span>
                         </div>
-                        <div class="mb-3">
-                            {!! $product->description ?? '' !!}
-                        </div>
 
                         @livewire('frontend.add-to-cart', ['product_id' => $product->id])
 
@@ -177,6 +174,25 @@
                                 <li><a href="{{ $socials->tiktok ?? '' }}"><i class="fa fa-tiktok"></i></a></li>
                             </ul>
                         </div>
+                        <div class="mt-3">
+                            <table class="table table-bordered">
+
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">ঢাকার মধ্যে ডেলিভারি চার্জ</td>
+                                        <td>৬৫ টাকা</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">ঢাকার আশেপাশে ডেলিভারি চার্জ</td>
+                                        <td>১০০ টাকা</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">ঢাকার বাহিরে ডেলিভারি চার্জ</td>
+                                        <td>১৩০ টাকা</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -187,7 +203,7 @@
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
                     <a class="active" data-bs-toggle="tab" href="#des-details2">Description</a>
-                    <a data-bs-toggle="tab" href="#des-details3">Reviews (2)</a>
+                    <a data-bs-toggle="tab" href="#des-details3">Delivery and Return Policy</a>
                 </div>
                 <div class="tab-content description-review-bottom">
                     <div id="des-details2" class="tab-pane active">
@@ -196,105 +212,21 @@
                         </div>
                     </div>
                     <div id="des-details3" class="tab-pane">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <div class="review-wrapper">
-                                    <div class="single-review">
-                                        <div class="review-img">
-                                            <img src="{{ asset('frontend/img/testimonial/1.jpg ') }}" alt="">
-                                        </div>
-                                        <div class="review-content">
-                                            <div class="review-top-wrap">
-                                                <div class="review-left">
-                                                    <div class="review-name">
-                                                        <h4>White Lewis</h4>
-                                                    </div>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-left">
-                                                    <a href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="review-bottom">
-                                                <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia
-                                                    Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula.
-                                                    Phasellus quam nisi, congue id nulla.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-review child-review">
-                                        <div class="review-img">
-                                            <img src="{{ asset('frontend/img/testimonial/2.jpg ') }}" alt="">
-                                        </div>
-                                        <div class="review-content">
-                                            <div class="review-top-wrap">
-                                                <div class="review-left">
-                                                    <div class="review-name">
-                                                        <h4>White Lewis</h4>
-                                                    </div>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-left">
-                                                    <a href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="review-bottom">
-                                                <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia
-                                                    Curae Sus pen disse viverra ed viverra. Mauris ullarper euismod
-                                                    vehicula. </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="ratting-form-wrapper pl-50">
-                                    <h3>Add a Review</h3>
-                                    <div class="ratting-form">
-                                        <form action="#">
-                                            <div class="star-box">
-                                                <span>Your rating:</span>
-                                                <div class="ratting-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style mb-10">
-                                                        <input placeholder="Name" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style mb-10">
-                                                        <input placeholder="Email" type="email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="rating-form-style form-submit">
-                                                        <textarea name="Your Review" placeholder="Message"></textarea>
-                                                        <input type="submit" value="Submit">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                        <div id="des-details2" class="tab-pane active">
+                            <div class="product-description-wrapper">
+                                <ol>
+                                    <li>আপনার যত প্রশ্ন আছে তা বর্ননার সাথে মিলিয়ে অথবা আমাদের কাছ থেকে জেনে পন্য অর্ডার
+                                        করুন।</li>
+                                    <li>আপনার ক্রয় করা প্রোডাটিতে যদি কোন সমস্যা পান অথবা সাইজ ছোট বড় হয় তাহলে আপনি
+                                        প্রোডক্টি এক্সচেঞ্জ করে নিতে পারবেন।</li>
+                                    <li>আমাদের প্রোডাক্ট এ যদি মেজর কোন ডিফেক্ট থাকে তাহলে আপনি রির্টান অথবা এক্সচেঞ্জ করতে
+                                        পারবেন।</li>
+                                    <li>ভুল প্রোডাক্ট শিপমেন্ট হলে যেমন কালার এবং সাইজ ইস্যু তে আপনি রির্টান অথবা এক্সচেঞ্জ
+                                        করতে পারবেন।</li>
+                                    <li>পণ্যটি দেখে পছন্দ না হলে ডেলিভারি চার্জ দিয়ে রির্টান করতে পারবেন।</li>
+                                    <li>পণ্যটি পাওয়ার ০৭ দিনের মধ্যে যেকোনো পরিবর্তনের জন্য আপনাকে গ্রাহক পরিষেবাকে জানাতে
+                                        অনুরোধ করা হচ্ছে।</li>
+                                </ol>
                             </div>
                         </div>
                     </div>

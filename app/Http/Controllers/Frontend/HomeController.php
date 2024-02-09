@@ -18,7 +18,8 @@ class HomeController extends Controller
     public function index(){
         $sliders = Slider::latest()->get();
         $top_category = Category::where('top_category', true)->get();
-        return view('frontend.partials.home.index', compact('sliders', 'top_category'));
+        $categories = Category::all();
+        return view('frontend.partials.home.index', compact('sliders', 'top_category','categories'));
     }
     public function wishlist(){
         return view('frontend.partials.wishlist');

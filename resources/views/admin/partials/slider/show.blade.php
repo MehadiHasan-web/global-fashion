@@ -17,6 +17,14 @@
                     <strong>Description: </strong>
                     <p class="ml-5">{{ $slider->description ?? '' }}</p>
                 </div>
+                <div class="mb-3">
+                    <strong>Related Category: </strong>
+                    @foreach ($categories as $category)
+                        @if ($category->id == $slider->category_id)
+                            {{ $category->name ?? '' }}
+                        @endif
+                    @endforeach
+                </div>
                 <div class="mt-3 mb-3 ">
                     <img src="{{ URL::to('storage/slider/' . $slider->image ?? '') }}" class="img-fluid rounded"
                         alt="" style="width: 300px">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SliderRequest;
+use App\Models\Admin\Category;
 use App\Models\Admin\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,7 +20,8 @@ class SliderController extends Controller
     public function index()
     {
         $sliders = Slider::all();
-        return view('admin.partials.slider.index', compact('sliders'));
+        $categories = Category::all();
+        return view('admin.partials.slider.index', compact('sliders', 'categories'));
     }
 
     /**
@@ -27,7 +29,8 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.partials.slider.create');
+        $categories = Category::all();
+        return view('admin.partials.slider.create', compact('categories'));
     }
 
     /**
@@ -39,6 +42,7 @@ class SliderController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
+            'category_id' => $request->category_id,
         ];
 
         $image = $request->file('image');
@@ -63,7 +67,8 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        return view('admin.partials.slider.show', compact('slider'));
+        $categories = Category::all();
+        return view('admin.partials.slider.show', compact('slider','categories'));
     }
 
     /**
@@ -71,7 +76,8 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('admin.partials.slider.edit', compact('slider'));
+        $categories = Category::all();
+        return view('admin.partials.slider.edit', compact('slider','categories'));
     }
 
     /**
@@ -82,11 +88,13 @@ class SliderController extends Controller
         $validation = $request->validate([
             'title' => 'nullable|max:55',
             'description' => 'nullable|max:200',
+            'category_id' => 'nullable',
             'image' => 'nullable|max:10240'
         ]);
         $data = [
             'title' => $request->title,
             'description' => $request->description,
+            'category_id' => $request->category_id,
         ];
         $image = $request->file('image');
         $filePath = public_path('storage/slider/' . $slider->image);
