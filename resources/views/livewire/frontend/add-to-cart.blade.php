@@ -33,7 +33,7 @@
 
         <div class="pro-details-quality mt-2">
             <div class="pro-details-cart btn-hover">
-                <button class="p-0 border-0"><a>Add To Cart</a></button>
+                <button class="p-0 border-0"><a>অর্ডার করুন</a></button>
                 {{-- <button>Add To Cart</button> --}}
             </div>
             <div class="pro-details-wishlist">
@@ -43,6 +43,14 @@
             <div class="pro-details-compare" style="margin-left: 20px; font-size:18px;">
                 <i class="fa-solid fa-shuffle "></i></a>
             </div>
+        </div>
+        <div>
+            <a href="tel:09610000383" class="btn btn-danger btn-block w-100 border-0 p-2 mb-2"
+                style="color: #fff; background-color: #002e45;"><i class="fa-solid fa-phone mr-2"></i>কল করতে ক্লিক করুন
+                :
+                09610000383</a>
+            <a href="https://wa.me/+8801810024507" class="btn btn-primary btn-block w-100 border-0 p-2 mb-2"><i
+                    class="fab fa-whatsapp"></i> Whatsapp Message : +8801810024507</a>
         </div>
     </form>
 </div>

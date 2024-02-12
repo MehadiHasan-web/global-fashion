@@ -102,7 +102,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="{{ route('setting') }}">
                                         <div class="icon red">
                                             <i class="icon-cog3"></i>
                                         </div>

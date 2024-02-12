@@ -125,6 +125,9 @@
                                     {{ $product->price ?? '' }}.00</span>
                             @endif
                         </div>
+                        <div>
+                            <p>Product Code: <span>{{ $product->product_code ?? '' }}</span></p>
+                        </div>
                         <div class="pro-details-rating-wrap d-none">
                             <div class="pro-details-rating">
                                 <i class="fa fa-star-o yellow"></i>

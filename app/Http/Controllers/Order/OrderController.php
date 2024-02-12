@@ -19,36 +19,21 @@ class OrderController extends Controller
     public function index()
     {
 
-        $total='';
         if (Auth::check()) {
             $user = Order::where('user_id', auth()->user()->id)->first();
-            $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
         } else {
             $session_id = session('session_id');
             if ($session_id) {
                 $user = Order::where('session_id', $session_id)->first();
-                $products = Cart::with('product')->where('session_id', $session_id)->get();
             } else {
                 return redirect()->route('login')->with('message', 'Please log in to view your orders.');
             }
         }
 
-
-        foreach ($products as $item) {
-            $price = $item->product->discounted_price ?? $item->product->price;
-            $total = (float)$total + $price * $item->quantity;
-        }
-
-        return view('frontend.partials.order.checkout', compact('user','total','products'));
+        return view('frontend.partials.order.checkout', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -67,16 +52,16 @@ class OrderController extends Controller
 
         ]);
         // dd($request->all());
-        $total='';
+        // $total='';
         if(Auth::check()){
             $products = Cart::with('product')->where('user_id', auth()->user()->id)->get();
         }else{
             $products = Cart::with('product')->where('session_id', session('session_id'))->get();
         }
-        foreach ($products as $item) {
-            $price = $item->product->discounted_price ?? $item->product->price;
-            $total = (float)$total + $price * $item->quantity;
-        }
+        // foreach ($products as $item) {
+        //     $price = $item->product->discounted_price ?? $item->product->price;
+        //     $total = (float)$total + $price * $item->quantity;
+        // }
 
        $data = [
         'fname' => $request->fname,
@@ -89,7 +74,7 @@ class OrderController extends Controller
         'email' => $request->email,
         'country' => 'Bangladesh',
         'additional_info' => $request->additional_info,
-        'total' => $total,
+        'total' => $request->subtotal,
         'order_id' => rand(10000, 900000),
         'status' => 0,
         'date' => date('d-m-Y'),
@@ -122,35 +107,4 @@ class OrderController extends Controller
         return redirect()->route('home');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
-    }
 }

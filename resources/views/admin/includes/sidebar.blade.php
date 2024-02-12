@@ -1,10 +1,14 @@
+@php
+    $setting = DB::table('settings')->first();
+@endphp
 <aside class="app-side" id="app-side">
     <!-- BEGIN .side-content -->
     <div class="side-content ">
         <!-- BEGIN .user-profile -->
         <div class="user-profile">
             <a href="{{ route('dashboard') }}" class="logo">
-                GLOBAL FASHION
+                <img class="w-100 h-auto" src="{{ URL::to('storage/settings/' . optional($setting)->logo) }}"
+                    alt="Logo">
             </a>
         </div>
         <!-- END .user-profile -->

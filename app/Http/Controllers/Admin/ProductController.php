@@ -49,9 +49,11 @@ class ProductController extends Controller
     {
         $color = json_encode($request->input('color', []));
         $size = json_encode($request->input('size', []));
+        $product_code = rand(10000, 99999) . chr(rand(65, 90));
         $data = [
             'name' => $request->name,
             'description' => $request->description,
+            'product_code' => $product_code,
             'price' => $request->price,
             'discounted_price' => $request->discounted_price,
             'brand_name' => $request->brand_name,

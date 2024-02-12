@@ -25,9 +25,6 @@
                 @endforeach
             @endisset
 
-
-
-
         </div>
     </div>
 

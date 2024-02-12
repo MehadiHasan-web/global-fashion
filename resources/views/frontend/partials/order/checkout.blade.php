@@ -125,71 +125,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="your-order-area">
-                        <h3>Your order</h3>
-                        <div class="your-order-wrap gray-bg-4">
-                            <div class="your-order-product-info">
-                                <div class="your-order-top">
-                                    <ul>
-                                        <li>Product</li>
-                                        <li>Total</li>
-                                    </ul>
-                                </div>
-                                <div class="your-order-middle">
-                                    <ul>
-                                        @isset($products)
-                                            @foreach ($products as $item)
-                                                <li><span class="order-middle-left">{{ $item->product->name }}</span> <span
-                                                        class="order-price">
-                                                        @if ($item->product->discounted_price)
-                                                            <span class="fw-bold"> ট </span>
-                                                            {{ $item->product->discounted_price * $item->quantity }}.00
-                                                        @else
-                                                            <span class="fw-bold"> ট
-                                                            </span>{{ $item->product->price * $item->quantity }}.00
-                                                        @endif
-                                                    </span></li>
-                                            @endforeach
-                                        @endisset
-                                    </ul>
-                                </div>
-                                <div class="your-order-total">
-                                    <ul>
-                                        <li class="order-total">Total</li>
-                                        <li>৳{{ $total ?? '' }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="payment-method">
-                                <div class="payment-accordion element-mrg">
-                                    <div class="panel-group" id="accordion">
-                                        <div class="panel payment-accordion">
-                                            <div class="panel-heading" id="method-three">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-bs-toggle="collapse" href="#method3">
-                                                        Cash on delivery
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="method3" class="panel-collapse collapse"
-                                                data-bs-parent="#accordion">
-                                                <div class="panel-body">
-                                                    <p>Please send a check to Store Name, Store Street, Store Town, Store
-                                                        State / County, Store Postcode.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="w-100 bg-white  mt-25 border-0" type="submit">
-                            <div class="Place-order ">
-                                <a class="btn-hover">Place Order</a>
-                            </div>
-                        </button>
-
-                    </div>
+                    @livewire('frontend.place-order')
                 </div>
             </form>
         </div>

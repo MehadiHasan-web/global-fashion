@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\ProductDetailsController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\SettingController;
 use App\Livewire\Frontend\Shop;
 use App\Livewire\Frontend\Wishlist;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +55,8 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
     Route::get('/category/remove-top/{id}', [TopCategory::class, 'removeTopCategory'])->name('removeTopCategory');
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact.index');
     Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact.store');
-
+    Route::get('/setting', [SettingController::class, 'setting'])->name('setting');
+    Route::post('/logo/{optional?}', [SettingController::class, 'logo'])->name('settings.logo');
 
 });
 

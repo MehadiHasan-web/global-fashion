@@ -1,15 +1,17 @@
 @php
     $categories = DB::table('categories')->orderBy('updated_at', 'desc')->take(3)->get();
     $subcategories = DB::table('sub_categories')->orderBy('updated_at', 'desc')->get();
+    $setting = DB::table('settings')->first();
 @endphp
 <header class="header-area header-padding-1 sticky-bar header-res-padding clearfix">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-6 col-4">
-                <div class="logo">
+                <div class="logo " style="height: 50px">
                     <a href="{{ route('home') }}">
                         <!-- <img alt="" src="{{ asset('frontend/img/logo/logo.png') }}"> -->
-                        <strong style="font-size: 20px">GLOBAL FASHION</strong>
+                        <img class="w-100" src="{{ URL::to('storage/settings/' . optional($setting)->logo) }}"
+                            alt="Logo" style="object-fit: cover; height:100%">
                     </a>
                 </div>
             </div>

@@ -38,6 +38,7 @@ class AddToCart extends Component
         }
         Cart::updateOrCreate($data);
         $this->dispatch('updateCartCount');
+        return redirect()->route('order.index');
     }
         // wishlist
         public function addToWishlist($id){

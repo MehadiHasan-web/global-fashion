@@ -1,15 +1,20 @@
+@php
+    $setting = DB::table('settings')->first();
+@endphp
 <footer class="footer-area bg-gray pt-100 pb-70">
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-4">
                 <div class="copyright mb-30">
                     <div class="footer-logo">
-                        <a href="index.html">
+                        <!-- <img alt="" src="{{ asset('frontend/img/logo/logo.png') }}"> -->
+                        <a href="{{ route('home') }}">
                             <!-- <img alt="" src="{{ asset('frontend/img/logo/logo.png') }}"> -->
-                            <h2>GLOBAL FASHION</h2>
+                            <img class="w-100" src="{{ URL::to('storage/settings/' . optional($setting)->logo) }}"
+                                alt="Logo" style="object-fit: cover; height:100%">
                         </a>
                     </div>
-                    <p>All Rights Reserved</p>
+                    <p>&copy; 2024 <a href="https://xcode.com.bd/">Xcode</a>. All rights reserved.</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4">

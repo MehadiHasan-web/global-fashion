@@ -17,7 +17,7 @@
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Description</th>
+                            <th>Code</th>
                             <th>Category</th>
                             <th>Price</th>
                             <th>Discount</th>
@@ -35,7 +35,7 @@
                                     </td>
                                     <td scope="row">{{ $item->name ?? '' }}</td>
                                     <td>
-                                        <p>{!! Str::limit($item->description, 30, '...') !!}</p>
+                                        <p>{{ $item->product_code ?? '' }}</p>
                                     </td>
                                     <td>{{ $item->category->name ?? '' }}</td>
                                     <td>{{ $item->price ?? '' }}</td>
