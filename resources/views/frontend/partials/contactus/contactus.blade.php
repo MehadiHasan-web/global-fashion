@@ -65,13 +65,18 @@
                         <div class="contact-title mb-30">
                             <h2>Get In Touch</h2>
                         </div>
-                        <form class="contact-form-style" id="contact-form" action="assets/php/mail.php" method="post">
+                        <form class="contact-form-style" action="{{ route('messages') }}" method="post">
+                            @method('POST')
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <input name="name" placeholder="Name*" type="text">
                                 </div>
                                 <div class="col-lg-6">
                                     <input name="email" placeholder="Email*" type="email">
+                                </div>
+                                <div class="col-lg-12">
+                                    <input name="phone" placeholder="Phone*" type="phone">
                                 </div>
                                 <div class="col-lg-12">
                                     <input name="subject" placeholder="Subject*" type="text">

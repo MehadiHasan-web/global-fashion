@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductDetailsController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\SettingController;
 use App\Livewire\Frontend\Shop;
@@ -33,6 +34,7 @@ Route::group([],function () {
     Route::get('/product-order/{id}', [HomeController::class, 'addToCart'])->name('addToCart');
     Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.us');
     Route::post('/search', [HomeController::class, 'search'])->name('search');
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages');
 
 });
 
@@ -57,6 +59,7 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
     Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact.store');
     Route::get('/setting', [SettingController::class, 'setting'])->name('setting');
     Route::post('/logo/{optional?}', [SettingController::class, 'logo'])->name('settings.logo');
+    Route::resource('message', MessageController::class);
 
 });
 

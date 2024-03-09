@@ -199,5 +199,7 @@ p {
     display: none;
 }
 
-
+.off-focus:focus{
+    color: black !important;
+}
 

@@ -150,6 +150,14 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('message.index') }}" class="has-arrow">
+                        <span class="has-icon">
+                            <i class="fa-solid fa-message"></i>
+                        </span>
+                        <span class="nav-title">Message</span>
+                    </a>
+                </li>
             </ul>
             <!-- END: side-nav-content -->
         </nav>
