@@ -465,7 +465,7 @@
 
 
     /*-----------------------
-        Shop filter active 
+        Shop filter active
     ------------------------- */
     $('.filter-active a').on('click', function(e) {
         e.preventDefault();
@@ -481,15 +481,15 @@
     $(function() {
         sliderrange.slider({
             range: true,
-            min: 16,
-            max: 400,
-            values: [0, 300],
+            min: 0,
+            max: 10000,
+            values: [0, 5000],
             slide: function(event, ui) {
-                amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                amountprice.val("ট" + ui.values[0] + " - ট" + ui.values[1]);
             }
         });
-        amountprice.val("$" + sliderrange.slider("values", 0) +
-            " - $" + sliderrange.slider("values", 1));
+        amountprice.val("ট" + sliderrange.slider("values", 0) +
+            " - ট" + sliderrange.slider("values", 1));
     });
 
 

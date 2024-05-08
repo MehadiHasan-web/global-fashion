@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Admin\Social;
+use App\Models\Admin\Tag;
 use App\Models\Frontend\Cart;
 use App\Models\Frontend\Wishlist;
 use Livewire\Component;
@@ -12,23 +14,31 @@ class Shop extends Component
 {
 
     public $search = '';
+    public $price;
 
-    public function mount(){
-       $this->search();
-    }
-    public function search() {
-        // dd('search complete');
-    }
+
+
 
     public function render()
     {
-        $product = $this->search
-        ? Product::where('name', 'like', '%' . $this->search . '%')->latest()->paginate(9)
-        : Product::latest()->paginate(9);
+
+        $productQuery = Product::query();
+
+        if ($this->search) {
+            $productQuery->where('name', 'like', '%' . $this->search . '%');
+        }
+        $productQuery->whereBetween('price', [0, $this->price ?? 50000])->latest()->orWhereBetween('discounted_price', [0, $this->price ?? 50000]);
+        $product = $productQuery->paginate(9);
+
+
         $social = Social::first();
-        return view('livewire.frontend.shop' , compact('product'));
+        $categories = Category::latest()->get();
+        $tags = Tag::latest()->get();
+
+        return view('livewire.frontend.shop' , compact('product', 'categories', 'tags'));
     }
 
+    // add to card
     public function addToCart($id){
         // dd($id);
         if(auth()->user()){
