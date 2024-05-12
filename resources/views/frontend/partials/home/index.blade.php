@@ -7,25 +7,56 @@
 
     <div class="container my-2">
         <h3>Top Categories</h3>
-        <div class="d-flex flex-wrap">
-            {{-- item --}}
-            @isset($top_category)
-                @foreach ($top_category as $item)
-                    <div class="col-6 col-sm-4 col-md-2 col-lx-2 col-gl-2 p-1 mb-2">
-                        <a href="{{ route('categoryProducts', $item->slug) }}">
-                            <div class="card shadow">
-                                <img class="card-img-top p-1 rounded" src="{{ URL::to('storage/categories/' . $item->image) }}"
-                                    alt="Card image cap">
-                                <div class="card-body p-2">
-                                    <h5 class="card-title m-0 text-center">{{ $item->name ?? '' }}</h5>
-                                </div>
+        {{-- swiper category  --}}
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper py-4">
+                @isset($top_category)
+                    @foreach ($top_category as $item)
+                        <div class="swiper-slide ">
+                            <div class=" p-1 mb-2 ">
+                                <a href="{{ route('categoryProducts', $item->slug) }}">
+                                    <div class=" p-1 ">
+                                        <div class="w-100% h-60%">
+                                            <img class="p-1 " src="{{ URL::to('storage/categories/' . $item->image) }}"
+                                                alt="Card image cap">
+                                        </div>
+                                        <h4 class="card-title m-0 text-center mt-1">{{ $item->name ?? '' }}</h4>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
-            @endisset
+                        </div>
+                    @endforeach
+                @endisset
 
+                {{-- <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                </div> --}}
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
+        {{-- swiper category  end --}}
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: false,
+                autoplay: true
+            });
+        </script>
+
     </div>
 
     <div class="product-area pb-60">

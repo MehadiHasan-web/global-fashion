@@ -2581,7 +2581,7 @@ a.default-btn {
 
 .stick .logo,
 .stick .header-right-wrap {
-    margin-top: 22px;
+    margin-top: 10px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

@@ -3,7 +3,7 @@
 @endphp
 <footer class="footer-area bg-gray pt-100 pb-70">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-2 col-md-4 col-sm-4">
                 <div class="copyright mb-30">
                     <div class="footer-logo">
@@ -14,7 +14,8 @@
                                 alt="Logo" style="object-fit: cover; height:100%">
                         </a>
                     </div>
-                    <p>&copy; 2024 <a href="https://xcode.com.bd/">Xcode</a>. All rights reserved.</p>
+                    <p>&copy; 2024 <a href="https://xcode.com.bd/" class="text-info">Xcode</a>. All rights reserved.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4">
@@ -65,15 +66,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+
+
+            {{-- display none  --}}
+            <div class="col-lg-4 col-md-6 col-sm-6 d-none">
                 <div class="footer-widget mb-30 ml-70">
                     <div class="footer-title">
                         <h3>GLOBAL FASHION</h3>
                     </div>
-                    <div class="subscribe-style">
+
+
+                    <div class="subscribe-style ">
                         <p>Get E-mail updates about our latest shop and special offers.</p>
                         <div id="mc_embed_signup" class="subscribe-form">
-                            <form id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank"
+                            <div id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank"
                                 name="mc-embedded-subscribe-form" method="post" action="">
                                 <div id="mc_embed_signup_scroll" class="mc-form">
                                     <input class="email" type="email" required=""
@@ -87,7 +93,7 @@
                                             value="Subscribe">
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

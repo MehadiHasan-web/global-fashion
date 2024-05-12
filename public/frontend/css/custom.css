@@ -27,3 +27,31 @@ div#noty_layout__topRight {
     border-color: #002e45;
 }
 
+/* swiper css  */
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+  }
+
+  .swiper .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: 1px solid green;
+
+  }
+  .swiper .swiper-slide img{
+    height: 200px;
+    border-radius: 10px;
+
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
+

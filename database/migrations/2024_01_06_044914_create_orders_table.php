@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('payment_type')->nullable();
             $table->string('shipping')->nullable();
             $table->string('order_id',25)->nullable();
+            $table->integer('session_id')->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->string('date')->nullable();
             $table->string('month')->nullable();

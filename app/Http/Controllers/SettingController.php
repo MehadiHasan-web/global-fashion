@@ -17,17 +17,19 @@ class SettingController extends Controller
 
         $logo = $request->file('logo');
         $setting = Setting::first();
-        if ($setting->logo) {
-            if ($logo) {
-                $uniqueName = Str::uuid()->toString() . '.' . $logo->getClientOriginalExtension();
-                $oldImagePath = public_path('storage/settings/' . $setting->logo);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
+        if($setting){
+            if ($setting->logo) {
+                if ($logo) {
+                    $uniqueName = Str::uuid()->toString() . '.' . $logo->getClientOriginalExtension();
+                    $oldImagePath = public_path('storage/settings/' . $setting->logo);
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
+                    $logo->move(public_path('storage/settings/'), $uniqueName);
+                    $setting->update(['logo' => $uniqueName]);
+                    flash()->addSuccess('Logo updated successfully');
+                    return redirect()->back();
                 }
-                $logo->move(public_path('storage/settings/'), $uniqueName);
-                $setting->update(['logo' => $uniqueName]);
-                flash()->addSuccess('Logo updated successfully');
-                return redirect()->back();
             }
         }else{
             if ($logo) {
