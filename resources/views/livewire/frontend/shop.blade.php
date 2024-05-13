@@ -187,7 +187,8 @@
                                                     <div
                                                         class="product-content
                                                                         text-center">
-                                                        <h3><a href="product-details.html">{{ $item->name ?? '' }}</a>
+                                                        <h3><a
+                                                                href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
                                                         </h3>
                                                         <div class="product-price">
                                                             @if ($item->discounted_price)

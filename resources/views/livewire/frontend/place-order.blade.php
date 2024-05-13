@@ -70,5 +70,9 @@
             <a class="btn-hover">Place Order</a>
         </div>
     </button>
+    <form method="get" action="{{ route('bkash-create-payment') }}">
+        @method('GET')
+        <button type="submit">Bkash</button>
+    </form>
 
 </div>

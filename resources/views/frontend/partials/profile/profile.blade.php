@@ -210,7 +210,8 @@
                             </div>
                             <div class="panel panel-default single-my-account">
                                 <div class="panel-heading my-account-title">
-                                    <h3 class="panel-title"><span>3 .</span> <a href="wishlist.html">Modify your wish list
+                                    <h3 class="panel-title"><span>3 .</span> <a href="{{ route('wishlist') }}">Modify
+                                            your wish list
                                         </a></h3>
                                 </div>
                             </div>
