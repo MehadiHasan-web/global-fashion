@@ -21,6 +21,7 @@
     @include('frontend.includes.footer')
 
 
+
     <!-- All JS is here
 ============================================ -->
     @include('frontend.includes.script');

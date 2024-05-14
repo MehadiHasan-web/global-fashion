@@ -1,7 +1,17 @@
 @php
     $setting = DB::table('settings')->first();
+    $contact = DB::table('contact_us')->first();
 @endphp
 <footer class="footer-area bg-gray pt-100 pb-70">
+    {{-- whatsapp logo --}}
+    <div style="position: fixed; right:0; bottom:0;">
+        <div class="pe-4 " style="padding-bottom: 120px">
+            <a href="https://wa.me/88{{ $contact->number ?? '' }}" target="_blank">
+                <img style="width: 50px; height:50px;     border-radius: 12px; cursor: pointer; "
+                    src="{{ asset('frontend/img/logo/whatsapp-icons.png') }}" alt="">
+            </a>
+        </div>
+    </div>
 
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
@@ -105,7 +115,6 @@
                     <div class="footer-title">
                         <h3>GLOBAL FASHION</h3>
                     </div>
-
 
                     <div class="subscribe-style ">
                         <p>Get E-mail updates about our latest shop and special offers.</p>

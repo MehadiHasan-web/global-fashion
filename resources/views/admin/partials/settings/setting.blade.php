@@ -20,6 +20,7 @@
                     <input type="file" name="logo" class="form-control" id="exampleInputEmail1"
                         aria-describedby="emailHelp">
                 </div>
+
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
 
