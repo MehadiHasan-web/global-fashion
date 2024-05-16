@@ -108,6 +108,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product->visit();
         return view('admin.partials.product.show', compact('product'));
     }
 

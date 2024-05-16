@@ -19,7 +19,10 @@ class HomeController extends Controller
         $sliders = Slider::latest()->get();
         $top_category = Category::where('top_category', true)->get();
         // $categories = Category::all();
-        return view('frontend.partials.home.index', compact('sliders', 'top_category'));
+        $popular_products = Product::popularThisWeek()->latest()->paginate(30);
+        // dd($popular_products);
+
+        return view('frontend.partials.home.index', compact('sliders', 'top_category','popular_products'));
     }
     public function wishlist(){
         return view('frontend.partials.wishlist');
@@ -64,8 +67,13 @@ class HomeController extends Controller
     }
     public function search(Request $request){
         $searchTerm = $request->search;
-       $searchResults =  Product::where('name', 'like', '%' . $searchTerm . '%')->get();
+    //    $searchResults =  Product::where('name', 'like', '%' . $searchTerm . '%')->get();
     //    dd($searchResults);
+    $searchResults = Product::where('name', 'like', '%' . $searchTerm . '%')
+    ->orWhereHas('tag', function ($query) use ($searchTerm) {
+        $query->where('name', 'like', '%' . $searchTerm . '%');
+    }) ->get();
+
        return view('frontend.partials.searchResult', compact('searchResults'));
     }
 

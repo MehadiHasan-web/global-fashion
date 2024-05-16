@@ -12,6 +12,7 @@ class ProductDetailsController extends Controller
 
     public function index($slug){
         $product = Product::where('slug', $slug)->firstOrFail();
+        $product->visit()->withIp();
         $socials = Social::first();
         return view('frontend.partials.single-product.single', compact('product','socials'));
     }

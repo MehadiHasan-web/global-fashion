@@ -28,9 +28,7 @@
                     @endforeach
                 @endisset
 
-                {{-- <div class="swiper-slide">
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </div> --}}
+
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -59,6 +57,7 @@
 
     </div>
 
+    @include('frontend.partials.home.popular-products')
     <div class="product-area pb-60">
         <div class="container">
             @include('frontend.partials.home.product')
