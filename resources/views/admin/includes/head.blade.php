@@ -15,4 +15,6 @@
 <link href="{{ asset('admin/vendor/chartist/css/chartist-custom.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
 
+{{-- alpine js  --}}
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 @livewireStyles

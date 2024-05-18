@@ -138,4 +138,8 @@
         </div>
     </div>
     <!-- Row end -->
+
+    {{-- pupular products  --}}
+    @livewire('admin.popular')
+    {{-- pupular products end --}}
 @endsection
