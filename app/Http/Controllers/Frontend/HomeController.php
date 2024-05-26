@@ -18,11 +18,11 @@ class HomeController extends Controller
     public function index(){
         $sliders = Slider::latest()->get();
         $top_category = Category::where('top_category', true)->get();
-        // $categories = Category::all();
+        $categories = Category::all();
         $popular_products = Product::popularThisWeek()->latest()->paginate(30);
         // dd($popular_products);
 
-        return view('frontend.partials.home.index', compact('sliders', 'top_category','popular_products'));
+        return view('frontend.partials.home.index', compact('sliders', 'top_category','popular_products','categories'));
     }
     public function wishlist(){
         return view('frontend.partials.wishlist');

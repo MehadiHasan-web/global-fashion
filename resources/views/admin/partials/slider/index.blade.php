@@ -1,9 +1,9 @@
 @extends('admin.master.master');
 @section('title')
-    Socials
+    Slider
 @endsection
 @section('subtitle')
-    Socials List
+    Slider List
 @endsection
 @section('content')
     <div class="col-lg-12 col-sm-12">
