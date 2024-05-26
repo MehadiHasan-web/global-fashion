@@ -66,8 +66,8 @@ Route::group(['middleware' => ['role:admin|moderator'], 'prefix' => 'dashboard']
 
 
 Route::middleware('auth')->group(function () {
-
-    Route::patch('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::patch('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::patch('/password-update', [ProfileController::class, 'changePassword'])->name('profile.change_password');
 
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
