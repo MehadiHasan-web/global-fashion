@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 // frontend controller
 Route::group([],function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/product-details/{slug}', [ProductDetailsController::class, 'index'])->name('product.details');
+    Route::get('/product-details/{slug}/{product_code}', [ProductDetailsController::class, 'index'])->name('product.details');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop');
     Route::get('/cart-page', [ShopController::class, 'viewCart'])->name('cart.page');
     Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist');

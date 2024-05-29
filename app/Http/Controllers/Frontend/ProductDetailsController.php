@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class ProductDetailsController extends Controller
 {
 
-    public function index($slug){
-        $product = Product::where('slug', $slug)->firstOrFail();
+    public function index($slug, $product_code){
+        // dd($product_code);
+        $product = Product::where('slug', $slug)->where('product_code', $product_code)->firstOrFail();
         $product->visit()->withIp();
         $socials = Social::first();
         return view('frontend.partials.single-product.single', compact('product','socials'));

@@ -14,7 +14,8 @@
                         <div class="col-xl-3 col-md-6 col-lg-3 col-sm-6 ">
                             <div class="product-wrap mb-25 card rounded shadow-lg">
                                 <div class="product-img p-2">
-                                    <a href="{{ route('product.details', $item->slug) }}">
+                                    <a
+                                        href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">
                                         <img class="default-img rounded-top"
                                             src="{{ URL::to('storage/product_thumbnail/' . $item->thumb_image ?? '') }}"
                                             alt="">
@@ -34,7 +35,8 @@
                                     </span>
                                 </div>
                                 <div class="product-content text-center">
-                                    <a href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
+                                    <a
+                                        href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">{{ $item->name ?? '' }}</a>
                                     <div class="product-price">
                                         @if ($item->discounted_price)
                                             <span

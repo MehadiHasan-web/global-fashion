@@ -146,7 +146,8 @@
                                             <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6">
                                                 <div class="product-wrap mb-25 scroll-zoom card rounded shadow">
                                                     <div class="product-img">
-                                                        <a href="{{ route('product.details', $item->slug) }}">
+                                                        <a
+                                                            href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">
                                                             <img class="default-img rounded-top"
                                                                 src="{{ URL::to('storage/product_thumbnail/' . $item->thumb_image ?? '') }}"
                                                                 alt="">
@@ -188,7 +189,7 @@
                                                         class="product-content
                                                                         text-center">
                                                         <h3><a
-                                                                href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
+                                                                href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">{{ $item->name ?? '' }}</a>
                                                         </h3>
                                                         <div class="product-price">
                                                             @if ($item->discounted_price)
@@ -222,7 +223,8 @@
                                                 <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6">
                                                     <div class="product-wrap">
                                                         <div class="product-img">
-                                                            <a href="{{ route('product.details', $item->slug) }}">
+                                                            <a
+                                                                href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">
                                                                 <img class="default-img"
                                                                     src="{{ URL::to('storage/product_thumbnail/' . $item->thumb_image ?? '') }}"
                                                                     alt="">
@@ -244,7 +246,7 @@
                                                     style="margin-bottom:100px;">
                                                     <div class="shop-list-content">
                                                         <h3><a
-                                                                href="{{ route('product.details', $item->slug) }}">{{ $item->name ?? '' }}</a>
+                                                                href="{{ route('product.details', ['slug' => $item->slug, 'product_code' => $item->product_code]) }}">{{ $item->name ?? '' }}</a>
                                                         </h3>
                                                         <div class="product-list-price">
                                                             @if ($item->discounted_price)
